@@ -22,11 +22,13 @@ inline int Capacidade::getCap(){
 }
 
 class Cargo {
+    //Henrique
     private:
     public:
 };
 
 class Classificacao {
+    //Henrique
     private:
     public:
 };
@@ -50,6 +52,7 @@ inline string Codigo::getCod(){
 
 
 class Data {
+    //Luiz
     private:
         string dat;
         static const regex FORMATO;
@@ -67,6 +70,7 @@ inline string Data::getDat(){
 }
 
 class Email {
+    //Henrique
     private:
     public:
 };
@@ -88,26 +92,31 @@ inline string Horario::getHor(){
 }
 
 class Matricula {
+    // Henrique
     private:
     public:
 };
 
 class Nome {
+    // Arthur
     private:
     public:
 };
 
 class Senha {
+    // Arthur
     private:
     public:
 };
 
 class Telefone {
+    // Arthur
     private:
     public:
 };
 
 class Tipo {
+    // Arthur
     private:
     public:
 };

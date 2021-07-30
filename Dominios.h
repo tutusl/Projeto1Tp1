@@ -9,9 +9,7 @@ using namespace std;
 
 class Capacidade {
     private:
-        //static const int ACEITOS[5] = {100, 200, 300, 400, 500};
         int cap;
-        //void validar(int cap);
 
     public:
         Capacidade(int cap);

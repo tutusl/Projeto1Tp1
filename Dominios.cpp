@@ -15,6 +15,7 @@ Capacidade::Capacidade(int cap){
 
 
 void Capacidade::setCap(int cap){
+    //Os números mágicos correspondem às capacidades possíveis
     switch (cap) {
         case 100:
         case 200:
@@ -28,19 +29,6 @@ void Capacidade::setCap(int cap){
     }
 
 
-/*
-    switch (cap) {
-        ACEITOS[0]:
-        ACEITOS[1]:
-        ACEITOS[2]:
-        ACEITOS[3]:
-        ACEITOS[4]:
-            this->cap = cap;
-            break;
-        default:
-            throw invalid_argument("Capacidade invalida");
-    }
-*/
 }
 
 

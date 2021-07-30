@@ -15,20 +15,16 @@ Capacidade::Capacidade(int cap){
 
 
 void Capacidade::setCap(int cap){
-    //Os números mágicos correspondem às capacidades possíveis
-    switch (cap) {
-        case 100:
-        case 200:
-        case 300:
-        case 400:
-        case 500:
+    switch (cap){
+        case ACEITOS[0]:
+        case ACEITOS[1]:
+        case ACEITOS[2]:
+        case ACEITOS[3]:
+        case ACEITOS[4]:
             this->cap = cap;
-            break;
         default:
             throw invalid_argument("Capacidade invalida");
     }
-
-
 }
 
 Cargo::Cargo(string car){

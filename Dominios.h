@@ -10,6 +10,7 @@ using namespace std;
 class Capacidade {
     private:
         int cap;
+        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
 
     public:
         Capacidade(int cap);

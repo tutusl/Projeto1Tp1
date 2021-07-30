@@ -67,7 +67,20 @@ int main()
         cout << exp.what() << endl;
     }
 
+
+    //Testando Cargo
+    Cargo car1("ator");
+    cout << car1.getCar() << endl;
+    try {
+        car1.setCar("Cachorro");
+    }
+    catch (invalid_argument &exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << car1.getCar() << endl;
+
     return 0;
 }
 
-// Testando
+

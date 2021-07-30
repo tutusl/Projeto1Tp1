@@ -31,6 +31,37 @@ void Capacidade::setCap(int cap){
 
 }
 
+Cargo::Cargo(string car){
+    setCar(car);
+}
+
+void Cargo::setCar(string car){
+
+    if(car.compare("ator") == 0){
+        this->car = car;
+    }
+    else if(car.compare("cenografo") == 0){
+        this->car = car;
+    }
+    else if(car.compare("figurinista") == 0){
+        this->car = car;
+    }
+    else if(car.compare("maquiador") == 0){
+        this->car = car;
+    }
+    else if(car.compare("sonoplasta") == 0){
+        this->car = car;
+    }
+    else if(car.compare("iluminador") == 0){
+        this->car = car;
+    }
+    else{
+        throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
+    }
+}
+
+
+
 
 
 //talvez colocar try-catch

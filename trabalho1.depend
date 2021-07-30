@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1627598773 source:/home/luiz/Desktop/UnB/TP1/trabalho1/Dominios.cpp
+	<stdexcept>
+	"Dominios.h"
+
+1627598695 /home/luiz/Desktop/UnB/TP1/trabalho1/Dominios.h
+	<string>
+	<regex>
+
+1627595169 source:/home/luiz/Desktop/UnB/TP1/trabalho1/main.cpp
+	<stdexcept>
+	<iostream>
+	<regex>
+	"Dominios.h"
+

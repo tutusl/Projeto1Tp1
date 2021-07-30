@@ -21,9 +21,15 @@ inline int Capacidade::getCap(){
     return cap;
 }
 
+class Cargo {
+    private:
+    public:
+};
 
-
-
+class Classificacao {
+    private:
+    public:
+};
 
 class Codigo {
     private:
@@ -42,7 +48,7 @@ inline string Codigo::getCod(){
 
 
 
-/*
+
 class Data {
     private:
         string dat;
@@ -59,7 +65,11 @@ class Data {
 inline string Data::getDat(){
     return dat;
 }
-*/
+
+class Email {
+    private:
+    public:
+};
 
 
 class Horario {
@@ -76,6 +86,35 @@ class Horario {
 inline string Horario::getHor(){
     return hor;
 }
+
+class Matricula {
+    private:
+    public:
+};
+
+class Nome {
+    private:
+    public:
+};
+
+class Senha {
+    private:
+    public:
+};
+
+class Telefone {
+    private:
+    public:
+};
+
+class Tipo {
+    private:
+    public:
+};
+
+
+
+
 
 
 #endif // DOMINIOS_H

@@ -5,6 +5,7 @@ using namespace std;
 
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
+const regex Nome::FORMATO {"([A-Z]\.?[A-Za-z]*\.?\s?)+"};
 
 
 //talvez colocar try-catch
@@ -89,3 +90,42 @@ void Horario::setHor(string hor){
     else
         throw invalid_argument("Horario invalido");
 }
+
+//Métodos de Nome
+
+Nome::Nome(string nome)
+{
+    if (nome.size() < 5)
+    {
+        throw length_error("Nome muito pequeno");
+    }
+    else if (nome.size() > 20)
+    {
+        throw length_error("Nome muito grande");
+    }
+    else
+    {
+        setNome(nome);
+    }
+}
+
+void Nome::setNome(string nome)
+{
+    if (regex_match(nome, FORMATO))
+    {
+        this->nome = nome;
+    }
+    else
+    {
+        throw invalid_argument("Nome invalido");
+    }
+
+}
+
+string Nome::getNome()
+{
+    return nome;
+}
+
+
+

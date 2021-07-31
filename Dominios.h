@@ -109,7 +109,12 @@ class Matricula {
 class Nome {
     // Arthur
     private:
+        string nome;
+        static const regex FORMATO;
     public:
+        Nome(string nome);
+        void setNome(string nome);
+        string getNome();
 };
 
 class Senha {

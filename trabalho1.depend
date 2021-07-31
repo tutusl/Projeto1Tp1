@@ -37,3 +37,17 @@
 	<string>
 	<regex>
 
+1627713945 source:c:\users\tutus\desktop\trabalho1\main.cpp
+	<stdexcept>
+	<iostream>
+	<regex>
+	"Dominios.h"
+
+1627713534 c:\users\tutus\desktop\trabalho1\dominios.h
+	<string>
+	<regex>
+
+1627714007 source:c:\users\tutus\desktop\trabalho1\dominios.cpp
+	<stdexcept>
+	"Dominios.h"
+

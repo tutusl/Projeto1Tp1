@@ -101,26 +101,14 @@ Nome::Nome(string nome)
 void Nome::setNome(string nome)
 {
     if (nome.size() < 5)
-    {
-        throw length_error("Nome muito pequeno");
-    }
+        throw length_error("Nome invalido (nome muito pequeno)");
     else if (nome.size() > 20)
-    {
-        throw length_error("Nome muito grande");
-    }
+        throw length_error("Nome invalido (nome muito grande)");
     else
-    {
         if (regex_match(nome, FORMATO))
-            {
                 this->nome = nome;
-            }
         else
-            {
-                throw invalid_argument("Nome invalido");
-            }
-
-    }
-
+                throw invalid_argument("Nome invalido (formato nao suportado)");
 }
 
 string Nome::getNome()

@@ -82,9 +82,24 @@ int main()
 
     //Testando Nome
     Nome nome1("Arthur S. Lopes");
-    //Nome nome2("Arthur Silva Lopes Aaaaaa");
-    //Nome nome3("Art");
-    //Nome nome4("nome Errado");
+    try {
+        nome1.setNome("Arthur Silva Lopes Aaaaaa");
+    }
+    catch(const length_error& err){
+        cout << err.what() << endl;
+    }
+    try {
+        nome1.setNome("Art");
+    }
+    catch(const length_error& err){
+        cout << err.what() << endl;
+    }
+    try {
+        nome1.setNome("Nome errado");
+    }
+    catch(const invalid_argument& err){
+        cout << err.what() << endl;
+    }
     cout << nome1.getNome() << endl;
 
 

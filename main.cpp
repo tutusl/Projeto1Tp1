@@ -81,7 +81,7 @@ int main()
     cout << car1.getCar() << endl;
 
     //Testando Nome
-    Nome nome1("Arthur S. Lopes");
+    Nome nome1("Arthur S Lopes");
     try {
         nome1.setNome("Arthur Silva Lopes Aaaaaa");
     }
@@ -102,6 +102,16 @@ int main()
     }
     cout << nome1.getNome() << endl;
 
+    //Testando Senha
+
+    Senha senha1("Aa0!bcde");
+    cout << senha1.getSenha() << endl;
+    try{
+        senha1.setSenha("Aa0!acde");
+    }
+    catch(const invalid_argument& err){
+        cout << err.what() << endl;
+    }
 
 
     return 0;

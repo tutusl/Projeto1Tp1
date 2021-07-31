@@ -120,7 +120,12 @@ class Nome {
 class Senha {
     // Arthur
     private:
+        string senha;
+        static const regex FORMATO;
     public:
+        Senha (string senha);
+        void setSenha(string senha);
+        string getSenha();
 };
 
 class Telefone {

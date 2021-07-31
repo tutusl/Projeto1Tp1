@@ -6,6 +6,7 @@ using namespace std;
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Nome::FORMATO {"([A-Z]\.?([A-Za-z]+\.?|[A-Za-z]*)\s?)+"};
+const regex Senha::FORMATO {"(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\s]){8}"};
 
 
 //talvez colocar try-catch
@@ -116,5 +117,31 @@ string Nome::getNome()
     return nome;
 }
 
+//Métodos Senha
 
+Senha::Senha (string senha)
+{
+    setSenha(senha);
+}
+void Senha::setSenha(string senha)
+{
+    bool charRepetido = false;
 
+    for (int i=0; i<senha.size(); i++)
+    {
+        for (int j=0; j<senha.size()-i-1; j++)
+        {
+            if (senha[i] == senha[i+j+1])
+                charRepetido = true;
+        }
+    }
+
+    if (charRepetido == false && regex_match(senha, FORMATO))
+            this->senha = senha;
+    else
+        throw invalid_argument("Senha invalida");
+}
+string Senha::getSenha()
+{
+    return senha;
+}

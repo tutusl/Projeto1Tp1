@@ -5,7 +5,7 @@ using namespace std;
 
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
-const regex Nome::FORMATO {"([A-Z]\.?[A-Za-z]*\.?\s?)+"};
+const regex Nome::FORMATO {"([A-Z]\.?([A-Za-z]+\.?|[A-Za-z]*)\s?)+"};
 
 
 //talvez colocar try-catch

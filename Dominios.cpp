@@ -95,6 +95,11 @@ void Horario::setHor(string hor){
 
 Nome::Nome(string nome)
 {
+        setNome(nome);
+}
+
+void Nome::setNome(string nome)
+{
     if (nome.size() < 5)
     {
         throw length_error("Nome muito pequeno");
@@ -105,19 +110,15 @@ Nome::Nome(string nome)
     }
     else
     {
-        setNome(nome);
-    }
-}
+        if (regex_match(nome, FORMATO))
+            {
+                this->nome = nome;
+            }
+        else
+            {
+                throw invalid_argument("Nome invalido");
+            }
 
-void Nome::setNome(string nome)
-{
-    if (regex_match(nome, FORMATO))
-    {
-        this->nome = nome;
-    }
-    else
-    {
-        throw invalid_argument("Nome invalido");
     }
 
 }

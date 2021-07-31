@@ -86,9 +86,7 @@ int main()
     //Nome nome3("Art");
     //Nome nome4("nome Errado");
     cout << nome1.getNome() << endl;
-    //cout << nome2.getNome() << endl;
-    //cout << nome3.getNome() << endl;
-    //cout << nome4.getNome() << endl;
+
 
 
     return 0;

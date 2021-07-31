@@ -28,11 +28,11 @@ class Cargo {
         string car;
     public:
         Cargo(string car);
-        void setCar(string car);
-        string getCar();
+        void setCargo(string car);
+        string getCargo();
 };
 
-inline string Cargo::getCar(){
+inline string Cargo::getCargo(){
     return car;
 }
 

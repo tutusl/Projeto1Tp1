@@ -69,16 +69,16 @@ int main()
 
 
     //Testando Cargo
-    Cargo car1("ator");
-    cout << car1.getCar() << endl;
+    Cargo cargo1("ator");
+    cout << cargo1.getCargo() << endl;
     try {
-        car1.setCar("Cachorro");
+        cargo1.setCargo("Cachorro");
     }
     catch (invalid_argument &exp){
         cout << exp.what() << endl;
     }
 
-    cout << car1.getCar() << endl;
+    cout << cargo1.getCargo() << endl;
 
     //Testando Nome
     Nome nome1("Arthur S Lopes");

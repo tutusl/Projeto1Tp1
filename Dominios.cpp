@@ -30,10 +30,10 @@ void Capacidade::setCap(int cap){
 }
 
 Cargo::Cargo(string car){
-    setCar(car);
+    setCargo(car);
 }
 
-void Cargo::setCar(string car){
+void Cargo::setCargo(string car){
 
     if(car.compare("ator") == 0){
         this->car = car;
@@ -92,7 +92,7 @@ void Horario::setHor(string hor){
         throw invalid_argument("Horario invalido");
 }
 
-//Métodos de Nome
+//Mï¿½todos de Nome
 
 Nome::Nome(string nome)
 {
@@ -117,7 +117,7 @@ string Nome::getNome()
     return nome;
 }
 
-//Métodos Senha
+//Mï¿½todos Senha
 
 Senha::Senha (string senha)
 {

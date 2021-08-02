@@ -25,22 +25,30 @@ inline int Capacidade::getCap(){
 class Cargo {
     //Henrique
     private:
-        string car;
+        string cargo;
     public:
-        Cargo(string car);
-        void setCargo(string car);
+        Cargo(string cargo);
+        void setCargo(string cargo);
         string getCargo();
 };
 
 inline string Cargo::getCargo(){
-    return car;
+    return cargo;
 }
 
 class Classificacao {
     //Henrique
     private:
+        string classificacao;
     public:
+        Classificacao(string classificacao);
+        void setClassificacao(string classificacao);
+        string getClassificacao();
 };
+
+inline string Classificacao::getClassificacao(){
+    return classificacao;
+}
 
 class Codigo {
     private:

@@ -113,6 +113,34 @@ int main()
         cout << err.what() << endl;
     }
 
+    //Testando classificação
+    
+    Classificacao clas1("livre");
+    cout << clas1.getClassificacao() << endl;
+    try{
+        clas1.setClassificacao("para criancas");
+    }
+    catch(const invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+    cout << clas1.getClassificacao() << endl;
+    try{
+        clas1.setClassificacao("14");
+    }
+    catch(const invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << clas1.getClassificacao() << endl;
+
+    try{
+        clas1.setClassificacao("livre");
+    }
+    catch(const invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << clas1.getClassificacao() << endl;
 
     return 0;
 }

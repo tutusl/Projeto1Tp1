@@ -29,32 +29,60 @@ void Capacidade::setCap(int cap){
     }
 }
 
-Cargo::Cargo(string car){
-    setCargo(car);
+Cargo::Cargo(string cargo){
+    setCargo(cargo);
 }
 
-void Cargo::setCargo(string car){
+void Cargo::setCargo(string cargo){
 
-    if(car.compare("ator") == 0){
-        this->car = car;
+    if(cargo.compare("ator") == 0){
+        this->cargo = cargo;
     }
-    else if(car.compare("cenografo") == 0){
-        this->car = car;
+    else if(cargo.compare("cenografo") == 0){
+        this->cargo = cargo;
     }
-    else if(car.compare("figurinista") == 0){
-        this->car = car;
+    else if(cargo.compare("figurinista") == 0){
+        this->cargo = cargo;
     }
-    else if(car.compare("maquiador") == 0){
-        this->car = car;
+    else if(cargo.compare("maquiador") == 0){
+        this->cargo = cargo;
     }
-    else if(car.compare("sonoplasta") == 0){
-        this->car = car;
+    else if(cargo.compare("sonoplasta") == 0){
+        this->cargo = cargo;
     }
-    else if(car.compare("iluminador") == 0){
-        this->car = car;
+    else if(cargo.compare("iluminador") == 0){
+        this->cargo = cargo;
     }
     else{
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
+    }
+}
+
+Classificacao::Classificacao(string classificacao){
+    setClassificacao(classificacao);
+}
+
+void Classificacao::setClassificacao(string classificacao){
+    if(classificacao.compare("livre") == 0){
+        this->classificacao = classificacao;
+    }
+    else if(classificacao.compare("10") == 0){
+        this->classificacao = classificacao;
+    }
+    else if(classificacao.compare("12") == 0){
+        this->classificacao = classificacao;
+    }
+    else if(classificacao.compare("14") == 0){
+        this->classificacao = classificacao;
+    }
+    else if(classificacao.compare("16") == 0){
+        this->classificacao = classificacao;
+    }
+    else if(classificacao.compare("18") == 0){
+        this->classificacao = classificacao;
+    }
+    else{
+        throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
     }
 }
 

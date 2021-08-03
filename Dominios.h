@@ -153,7 +153,11 @@ class Telefone {
 class Tipo {
     // Arthur
     private:
+        string tipo;
     public:
+        Tipo (string tipo);
+        void setTipo(string tipo);
+        string getTipo();
 };
 
 #endif // DOMINIOS_H

@@ -208,6 +208,24 @@ int main()
     }
     cout << telefone1.getTelefone() << endl;
 
+    //Testando Tipo
+
+    Tipo tipo1("auto");
+
+    try{
+        tipo1.setTipo("comedia");
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << endl;
+    }
+    try{
+        tipo1.setTipo("monólogo");
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << endl;
+    }
+    cout << tipo1.getTipo() << endl;
+
     return 0;
 }
 

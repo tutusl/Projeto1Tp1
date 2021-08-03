@@ -254,3 +254,48 @@ string Telefone::getTelefone()
 {
     return numeroTelefone;
 }
+
+//Metodos Tipo
+
+Tipo::Tipo (string tipo)
+{
+    setTipo(tipo);
+}
+void Tipo::setTipo(string tipo)
+{
+    if(tipo.compare("auto") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("comedia") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("drama") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("farsa") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("melodrama") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("monologo") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("musical") == 0) {
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("opera") == 0){
+        this->tipo = tipo;
+    }
+    else if(tipo.compare("revista") == 0){
+        this->tipo = tipo;
+    }
+    else{
+        throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
+    }
+
+}
+string Tipo::getTipo()
+{
+    return tipo;
+}

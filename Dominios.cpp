@@ -5,6 +5,7 @@ using namespace std;
 
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
+const regex Data::FORMATO {"(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([2-9][0-9]{3})"};
 const regex Nome::FORMATO {"([A-Z]\.?([A-Za-z]+\.?|[A-Za-z]*)\s?)+"};
 const regex Senha::FORMATO {"(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\s]){8}"};
 
@@ -105,6 +106,44 @@ void Codigo::setCod(string cod){
 }
 
 
+Data::Data(string dat){
+    setDat(dat);
+}
+
+
+void Data::setDat(string dat){
+    if (!regex_match(dat, FORMATO))
+        throw invalid_argument("Data invalida.");
+
+    constexpr int MESES_C_30_DIAS[4] = {4, 6, 9, 11};
+    bool valida = true;
+    int dia, mes, ano;
+    dia = stoi(dat.substr(0, 2));
+    mes = stoi(dat.substr(3, 2));
+    ano = stoi(dat.substr(6, 4));
+    bool ano_bissexto = (ano % 400 == 0) || (ano % 100 != 0 && ano % 4 == 0);
+
+    if (mes == 2 && (dia > 29 || (!ano_bissexto && dia == 29)))
+        valida &= false;
+
+    if (dia == 31){
+        switch (mes){
+            case MESES_C_30_DIAS[0]:
+            case MESES_C_30_DIAS[1]:
+            case MESES_C_30_DIAS[2]:
+            case MESES_C_30_DIAS[3]:
+                valida &= false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (valida)
+        this->dat = dat;
+    else
+        throw invalid_argument("Data invalida.");
+}
 
 
 //talvez colocar try-catch

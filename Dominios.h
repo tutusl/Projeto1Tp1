@@ -8,6 +8,7 @@ using namespace std;
 
 
 class Capacidade {
+    //Luiz
     private:
         int cap;
         static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
@@ -51,6 +52,7 @@ inline string Classificacao::getClassificacao(){
 }
 
 class Codigo {
+    //Luiz
     private:
         string cod;
         static const regex FORMATO;
@@ -94,6 +96,7 @@ class Email {
 
 
 class Horario {
+    //Luiz
     private:
         string hor;
         static const regex FORMATO;

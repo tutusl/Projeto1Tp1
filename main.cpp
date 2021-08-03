@@ -114,7 +114,7 @@ int main()
     }
 
     //Testando classificação
-    
+
     Classificacao clas1("livre");
     cout << clas1.getClassificacao() << endl;
     try{
@@ -141,6 +141,54 @@ int main()
     }
 
     cout << clas1.getClassificacao() << endl;
+
+
+    //Testando data
+
+    string d1 {"29/02/2000"};
+    string d2 {"31/04/2010"};
+    string d3 {"31/05/1900"};
+    string d4 {"31/02/2010"};
+    string d5 {"31/4/2010"};
+
+    Data data1("03/03/2019");
+
+    try{
+        data1.setDat(d1);
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << '\n';
+    }
+
+    try{
+        data1.setDat(d2);
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << '\n';
+    }
+
+    try{
+        data1.setDat(d3);
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << '\n';
+    }
+
+    try{
+        data1.setDat(d4);
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << '\n';
+    }
+
+    try{
+        data1.setDat(d5);
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << '\n';
+    }
+
+    cout << data1.getDat() << '\n';
 
     return 0;
 }

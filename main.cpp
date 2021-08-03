@@ -190,6 +190,24 @@ int main()
 
     cout << data1.getDat() << '\n';
 
+    //Testando Telefone
+
+    Telefone telefone1("(61)-142243465");
+
+    try{
+        telefone1.setTelefone("(11)-123456789");
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << endl;
+    }
+    try{
+        telefone1.setTelefone("(20)-123456789");
+    }
+    catch(invalid_argument &exp){
+        cout << exp.what() << endl;
+    }
+    cout << telefone1.getTelefone() << endl;
+
     return 0;
 }
 

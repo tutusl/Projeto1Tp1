@@ -142,7 +142,12 @@ class Senha {
 class Telefone {
     // Arthur
     private:
+        string numeroTelefone;
+        static const regex FORMATO;
     public:
+        Telefone (string numeroTelefone);
+        void setTelefone(string numeroTelefone);
+        string getTelefone();
 };
 
 class Tipo {
@@ -150,10 +155,5 @@ class Tipo {
     private:
     public:
 };
-
-
-
-
-
 
 #endif // DOMINIOS_H

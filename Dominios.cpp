@@ -37,22 +37,16 @@ Cargo::Cargo(string cargo){
 
 void Cargo::validar(string cargo){
     if(cargo.compare("ator") == 0){
-        // this->cargo = cargo;
     }
     else if(cargo.compare("cenografo") == 0){
-        // this->cargo = cargo;
     }
     else if(cargo.compare("figurinista") == 0){
-        // this->cargo = cargo;
     }
     else if(cargo.compare("maquiador") == 0){
-        // this->cargo = cargo;
     }
     else if(cargo.compare("sonoplasta") == 0){
-        // this->cargo = cargo;
     }
     else if(cargo.compare("iluminador") == 0){
-        // this->cargo = cargo;
     }
     else{
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
@@ -70,22 +64,16 @@ Classificacao::Classificacao(string classificacao){
 
 void Classificacao::validar(string classificacao){
     if(classificacao.compare("livre") == 0){
-        // this->classificacao = classificacao;
     }
     else if(classificacao.compare("10") == 0){
-        // this->classificacao = classificacao;
     }
     else if(classificacao.compare("12") == 0){
-        // this->classificacao = classificacao;
     }
     else if(classificacao.compare("14") == 0){
-        // this->classificacao = classificacao;
     }
     else if(classificacao.compare("16") == 0){
-        // this->classificacao = classificacao;
     }
     else if(classificacao.compare("18") == 0){
-        // this->classificacao = classificacao;
     }
     else{
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");

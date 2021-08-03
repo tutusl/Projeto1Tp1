@@ -13,17 +13,17 @@
 	<regex>
 	"Dominios.h"
 
-1627653831 source:d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\main.cpp
+1628004698 source:d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\main.cpp
 	<stdexcept>
 	<iostream>
 	<regex>
 	"Dominios.h"
 
-1627660846 d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\dominios.h
+1628004698 d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\dominios.h
 	<string>
 	<regex>
 
-1627660999 source:d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\dominios.cpp
+1628004698 source:d:\unb\7_semestre\tecnicasdeprogramacao1\projeto1tp1\dominios.cpp
 	<stdexcept>
 	"Dominios.h"
 

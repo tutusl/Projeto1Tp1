@@ -81,7 +81,7 @@ int main()
     cout << cargo1.getCargo() << endl;
 
     //Testando Nome
-    Nome nome1("Arthur S Lopes");
+    Nome nome1("Arthur S. Jr. Lopes");
     try {
         nome1.setNome("Arthur Silva Lopes Aaaaaa");
     }

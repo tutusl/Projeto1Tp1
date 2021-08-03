@@ -37,17 +37,17 @@
 	<string>
 	<regex>
 
-1627754274 source:c:\users\tutus\desktop\trabalho1\main.cpp
+1627999245 source:c:\users\tutus\desktop\trabalho1\main.cpp
 	<stdexcept>
 	<iostream>
 	<regex>
 	"Dominios.h"
 
-1627753733 c:\users\tutus\desktop\trabalho1\dominios.h
+1627999008 c:\users\tutus\desktop\trabalho1\dominios.h
 	<string>
 	<regex>
 
-1627754068 source:c:\users\tutus\desktop\trabalho1\dominios.cpp
+1627999245 source:c:\users\tutus\desktop\trabalho1\dominios.cpp
 	<stdexcept>
 	"Dominios.h"
 

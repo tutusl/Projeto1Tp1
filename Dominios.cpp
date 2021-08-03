@@ -6,7 +6,7 @@ using namespace std;
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Data::FORMATO {"(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([2-9][0-9]{3})"};
-const regex Nome::FORMATO {"([A-Z]\.?([A-Za-z]+\.?|[A-Za-z]*)\s?)+"};
+const regex Nome::FORMATO {"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 const regex Senha::FORMATO {"(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\s]){8}"};
 
 

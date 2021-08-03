@@ -91,8 +91,16 @@ inline string Data::getDat(){
 class Email {
     //Henrique
     private:
+        string email;
     public:
+        Email(string email);
+        void setEmail(string email);
+        string getEmail();
 };
+
+inline string Email::getEmail(){
+    return email;
+}
 
 
 class Horario {

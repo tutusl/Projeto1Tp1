@@ -27,6 +27,7 @@ class Cargo {
     //Henrique
     private:
         string cargo;
+        void validar(string cargo);
     public:
         Cargo(string cargo);
         void setCargo(string cargo);
@@ -41,6 +42,7 @@ class Classificacao {
     //Henrique
     private:
         string classificacao;
+        void validar(string classificacao);
     public:
         Classificacao(string classificacao);
         void setClassificacao(string classificacao);
@@ -92,6 +94,7 @@ class Email {
     //Henrique
     private:
         string email;
+        void validar(string email);
     public:
         Email(string email);
         void setEmail(string email);

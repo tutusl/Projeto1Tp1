@@ -35,8 +35,7 @@ Cargo::Cargo(string cargo){
     setCargo(cargo);
 }
 
-void Cargo::setCargo(string cargo){
-
+void Cargo::validar(string cargo){
     if(cargo.compare("ator") == 0){
         this->cargo = cargo;
     }
@@ -60,11 +59,16 @@ void Cargo::setCargo(string cargo){
     }
 }
 
+void Cargo::setCargo(string cargo){
+    validar(cargo);
+    this->cargo = cargo;
+}
+
 Classificacao::Classificacao(string classificacao){
     setClassificacao(classificacao);
 }
 
-void Classificacao::setClassificacao(string classificacao){
+void Classificacao::validar(string classificacao){
     if(classificacao.compare("livre") == 0){
         this->classificacao = classificacao;
     }
@@ -86,6 +90,11 @@ void Classificacao::setClassificacao(string classificacao){
     else{
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
     }
+}
+
+void Classificacao::setClassificacao(string classificacao){
+    validar(classificacao);
+    this->classificacao = classificacao;
 }
 
 
@@ -144,6 +153,20 @@ void Data::setDat(string dat){
         this->dat = dat;
     else
         throw invalid_argument("Data invalida.");
+}
+
+Email::Email(string email){
+    setEmail(email);
+}
+
+void Email::validar(string email){
+
+}
+
+void Email::setEmail(string email){
+    validar(email);
+    this->email = email;
+    //
 }
 
 

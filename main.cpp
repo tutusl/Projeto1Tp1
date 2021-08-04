@@ -257,6 +257,46 @@ int main()
 
     cout << m1.getMatricula() << endl;
 
+    //Testando email
+
+    Email e1("h.t@g.c");
+
+    cout << e1.getEmail() << endl;
+
+    try{
+        e1.setEmail("12541");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+    cout << e1.getEmail() << endl;
+    try{
+        e1.setEmail("h-~.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << e1.getEmail() << endl;
+
+    try{
+        e1.setEmail("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << e1.getEmail() << endl;
+
+    try{
+        e1.setEmail("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz@gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << e1.getEmail() << endl;
+
     return 0;
 }
 

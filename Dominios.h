@@ -97,6 +97,7 @@ class Email {
     private:
         string email;
         void validar(string email);
+        static const regex FORMATO;
     public:
         Email(string email);
         void setEmail(string email);

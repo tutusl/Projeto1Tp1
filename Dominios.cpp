@@ -7,7 +7,7 @@ const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Matricula::FORMATO {"[0-9]{5}"};
 const regex Data::FORMATO {"(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[0-2])\\/([2-9][0-9]{3})"};
-const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,64}[@][A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,255}"};
+const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,64}()[@][A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,255}"};
 const regex Nome::FORMATO {"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 const regex Senha::FORMATO {"(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\\s]){8}"};
 const regex Telefone::FORMATO {"\\((11|12|13|14|15|16|17|18|19|21|22|24|27|28|32|33|34|35|37|38|41|42|43|44|45|46|47|48|49|51|53|54|55|61|62|63|64|65|66|67|68|69|71|73|74|75|77|79|81|82|83|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99)\\)\\-[\\d]{9}"};
@@ -137,6 +137,41 @@ void Email::validar(string email){
         throw invalid_argument("Formato invalido");
     }
 
+    bool ponto_sequencia;
+    const int TAMANHO_EMAIL = email.length();
+    int i;
+
+    for(i = 0; i < TAMANHO_EMAIL - 1; i++){
+        if(email[i] == '.' && email[i + 1] == '.'){
+            ponto_sequencia = true;
+        }
+    }
+    if(ponto_sequencia){
+        throw invalid_argument("Caractere '.' usado em sequencia");
+    }
+    else{
+        char caractere;
+
+        if (email[0] == '.'){
+            throw invalid_argument("caractere '.' iniciando e-mail");
+        }
+        else if (email[TAMANHO_EMAIL - 1] == '.'){
+            throw invalid_argument("caractere '.' finalizando e-mail");
+        }
+        else{
+            i = 0;
+            do{
+                caractere = email[i];
+                i++;
+            }while(caractere != '@');   
+
+            if(email[i - 2] == '.' || email[i] == '.'){
+                throw invalid_argument("caractere '.' em posicao invalida");
+            } 
+        }
+    }
+
+    
 }
 
 void Email::setEmail(string email){

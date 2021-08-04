@@ -269,7 +269,9 @@ int main()
     catch(invalid_argument& exp){
         cout << exp.what() << endl;
     }
+
     cout << e1.getEmail() << endl;
+    
     try{
         e1.setEmail("h-~.com");
     }
@@ -296,6 +298,58 @@ int main()
     }
 
     cout << e1.getEmail() << endl;
+
+    try{
+        e1.setEmail(".a@gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("a.@gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("a@.gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("a@gmail.com.");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("a@gm..ail.com.");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("a..@gmail.com.");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    try{
+        e1.setEmail("h.t@gmail.com");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << e1.getEmail() << endl;
+
 
     return 0;
 }

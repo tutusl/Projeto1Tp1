@@ -226,6 +226,37 @@ int main()
     }
     cout << tipo1.getTipo() << endl;
 
+    //Testando matricula
+
+    Matricula m1("12345");
+
+    cout << m1.getMatricula() << endl;
+
+    try{
+        m1.setMatricula("12541");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+    cout << m1.getMatricula() << endl;
+    try{
+        m1.setMatricula("54896");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << m1.getMatricula() << endl;
+
+    try{
+        m1.setMatricula("113999");
+    }
+    catch(invalid_argument& exp){
+        cout << exp.what() << endl;
+    }
+
+    cout << m1.getMatricula() << endl;
+
     return 0;
 }
 

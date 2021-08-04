@@ -5,6 +5,7 @@ using namespace std;
 
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([01][0-9]|2[0-3]):(00|15|30|45)"};
+const regex Matricula::FORMATO {"[0-9]{5}"};
 const regex Data::FORMATO {"(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[0-2])\\/([2-9][0-9]{3})"};
 const regex Nome::FORMATO {"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 const regex Senha::FORMATO {"(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\\s]){8}"};
@@ -36,19 +37,10 @@ Cargo::Cargo(string cargo){
 }
 
 void Cargo::validar(string cargo){
-    if(cargo.compare("ator") == 0){
-    }
-    else if(cargo.compare("cenografo") == 0){
-    }
-    else if(cargo.compare("figurinista") == 0){
-    }
-    else if(cargo.compare("maquiador") == 0){
-    }
-    else if(cargo.compare("sonoplasta") == 0){
-    }
-    else if(cargo.compare("iluminador") == 0){
-    }
-    else{
+
+    if(!(cargo.compare("ator") == PALAVRA_IGUAL || cargo.compare("figurinista") == PALAVRA_IGUAL 
+    || cargo.compare("cenografo") == PALAVRA_IGUAL || cargo.compare("maquiador") == PALAVRA_IGUAL
+    || cargo.compare("sonoplasta") == PALAVRA_IGUAL || cargo.compare("iluminador") == PALAVRA_IGUAL)){
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
     }
 }
@@ -62,22 +54,14 @@ Classificacao::Classificacao(string classificacao){
     setClassificacao(classificacao);
 }
 
+
 void Classificacao::validar(string classificacao){
-    if(classificacao.compare("livre") == 0){
-    }
-    else if(classificacao.compare("10") == 0){
-    }
-    else if(classificacao.compare("12") == 0){
-    }
-    else if(classificacao.compare("14") == 0){
-    }
-    else if(classificacao.compare("16") == 0){
-    }
-    else if(classificacao.compare("18") == 0){
-    }
-    else{
+    if(!(classificacao.compare("livre") == CLASSIFICACAO_IGUAL || classificacao.compare("10") == CLASSIFICACAO_IGUAL
+    || classificacao.compare("12") == CLASSIFICACAO_IGUAL || classificacao.compare("14") == CLASSIFICACAO_IGUAL
+    || classificacao.compare("16") == CLASSIFICACAO_IGUAL || classificacao.compare("18") == CLASSIFICACAO_IGUAL)){
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
     }
+    
 }
 
 void Classificacao::setClassificacao(string classificacao){
@@ -154,7 +138,6 @@ void Email::validar(string email){
 void Email::setEmail(string email){
     validar(email);
     this->email = email;
-    //
 }
 
 
@@ -170,6 +153,39 @@ void Horario::setHor(string hor){
     else
         throw invalid_argument("Horario invalido");
 }
+
+Matricula::Matricula(string matricula){
+    setMatricula(matricula);
+}
+
+void Matricula::validar(string matricula){
+    if (!regex_match(matricula, FORMATO)){
+        throw invalid_argument("Somente sao validos digitos(0-9) no formato XXXXX");
+    }
+    else{
+        int i, j;
+        bool flag = false;    
+
+        for(i = 0; i < matricula.length() - 1; i++){
+            for(j = i + 1; j < matricula.length(); j++){
+                if (matricula[i] == matricula[j]){
+                    flag = true;
+                    break;
+                }
+            }
+        }
+
+        if(flag == true){
+            throw invalid_argument("Digito duplicado");
+        }  
+    }    
+}
+
+void Matricula::setMatricula(string matricula){
+    validar(matricula);
+    this->matricula = matricula;
+}
+
 
 //Metodos de Nome
 

@@ -28,6 +28,7 @@ class Cargo {
     private:
         string cargo;
         void validar(string cargo);
+        static const bool PALAVRA_IGUAL = 0;
     public:
         Cargo(string cargo);
         void setCargo(string cargo);
@@ -43,6 +44,7 @@ class Classificacao {
     private:
         string classificacao;
         void validar(string classificacao);
+        static const bool CLASSIFICACAO_IGUAL = 0;
     public:
         Classificacao(string classificacao);
         void setClassificacao(string classificacao);
@@ -125,8 +127,18 @@ inline string Horario::getHor(){
 class Matricula {
     // Henrique
     private:
+        string matricula;
+        static const regex FORMATO;
+        void validar(string matricula);
     public:
+        Matricula(string matricula);
+        void setMatricula(string matricula);
+        string getMatricula();
 };
+
+inline string Matricula::getMatricula(){
+    return matricula;
+}
 
 class Nome {
     // Arthur

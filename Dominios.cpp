@@ -137,26 +137,26 @@ void Email::validar(string email){
         throw invalid_argument("Formato invalido");
     }
 
-    bool ponto_sequencia;
+    bool pontoSequencia;
     const int TAMANHO_EMAIL = email.length();
     int i;
 
     for(i = 0; i < TAMANHO_EMAIL - 1; i++){
         if(email[i] == '.' && email[i + 1] == '.'){
-            ponto_sequencia = true;
+            pontoSequencia = true;
         }
     }
-    if(ponto_sequencia){
+    if(pontoSequencia){
         throw invalid_argument("Caractere '.' usado em sequencia");
     }
     else{
         char caractere;
 
         if (email[0] == '.'){
-            throw invalid_argument("caractere '.' iniciando e-mail");
+            throw invalid_argument("Caractere '.' iniciando e-mail");
         }
         else if (email[TAMANHO_EMAIL - 1] == '.'){
-            throw invalid_argument("caractere '.' finalizando e-mail");
+            throw invalid_argument("Caractere '.' finalizando e-mail");
         }
         else{
             i = 0;
@@ -166,7 +166,7 @@ void Email::validar(string email){
             }while(caractere != '@');   
 
             if(email[i - 2] == '.' || email[i] == '.'){
-                throw invalid_argument("caractere '.' em posicao invalida");
+                throw invalid_argument("Caractere '.' em posicao invalida");
             } 
         }
     }

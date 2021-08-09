@@ -7,21 +7,77 @@
 using namespace std;
 
 
-class Capacidade {
+////////////////////////////////////////////////
+template <typename T>
+class Dominio {
     //Luiz
     private:
-        int cap;
-        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
+        T valor;
+        virtual void validar(T valor) = 0;
 
     public:
-        Capacidade(int cap);
-        void setCap(int cap);
-        int getCap();
+        void setValor(T valor);
+        T getValor();
+
 };
 
-inline int Capacidade::getCap(){
-    return cap;
+template <typename T>
+inline T Dominio<T>::getValor(){
+    return valor;
 }
+
+template <typename T>
+inline void Dominio<T>::setValor(T valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+
+
+class Capacidade: public Dominio<int> {
+    //Luiz
+    private:
+        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
+        void validar(int valor) override;
+};
+
+
+
+class Codigo: public Dominio<string> {
+    //Luiz
+    private:
+        static const regex FORMATO;
+        void validar(string valor) override;
+};
+
+
+//////////////////////////////////////////
+
+
+
+
+
+//class Capacidade {
+//    //Luiz
+//    private:
+//        int cap;
+//        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
+//
+//    public:
+//        Capacidade(int cap);
+//        void setCap(int cap);
+//        int getCap();
+//};
+//
+//inline int Capacidade::getCap(){
+//    return cap;
+//}
+
+
+
+
+
+
 
 class Cargo {
     //Henrique
@@ -55,21 +111,23 @@ inline string Classificacao::getClassificacao(){
     return classificacao;
 }
 
-class Codigo {
-    //Luiz
-    private:
-        string cod;
-        static const regex FORMATO;
 
-    public:
-        Codigo(string cod);
-        void setCod(string cod);
-        string getCod();
-};
 
-inline string Codigo::getCod(){
-    return cod;
-}
+//class Codigo {
+//    //Luiz
+//    private:
+//        string cod;
+//        static const regex FORMATO;
+//
+//    public:
+//        Codigo(string cod);
+//        void setCod(string cod);
+//        string getCod();
+//};
+//
+//inline string Codigo::getCod(){
+//    return cod;
+//}
 
 
 

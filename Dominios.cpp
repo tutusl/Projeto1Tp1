@@ -10,28 +10,62 @@ const regex Data::FORMATO {"(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[0-2])\\/([2-9][
 const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,64}()[@][A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{1,255}"};
 const regex Nome::FORMATO {"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 const regex Senha::FORMATO {"(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\\s]){8}"};
-const regex Telefone::FORMATO {"\\((11|12|13|14|15|16|17|18|19|21|22|24|27|28|32|33|34|35|37|38|41|42|43|44|45|46|47|48|49|51|53|54|55|61|62|63|64|65|66|67|68|69|71|73|74|75|77|79|81|82|83|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99)\\)\\-[\\d]{9}"};
+//const regex Telefone::FORMATO {"\\((11|12|13|14|15|16|17|18|19|21|22|24|27|28|32|33|34|35|37|38|41|42|43|44|45|46|47|48|49|51|53|54|55|61|62|63|64|65|66|67|68|69|71|73|74|75|77|79|81|82|83|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99)\\)\\-(?!0{9})[\\d]{9}"};
+const regex Telefone::FORMATO {"\\(([14689][1-9]|2[12478]|3[2-578]|5[13-5]|7[13-579])\\)\\-(?!0{9})[\\d]{9}"};
 
 
-//talvez colocar try-catch
-Capacidade::Capacidade(int cap){
-    setCap(cap);
-}
+/////////////////////////////////////////////////
 
 
 
-void Capacidade::setCap(int cap){
-    switch (cap){
+void Capacidade::validar(int valor){
+
+    switch (valor){
         case ACEITOS[0]:
         case ACEITOS[1]:
         case ACEITOS[2]:
         case ACEITOS[3]:
         case ACEITOS[4]:
-            this->cap = cap;
+            break;
         default:
             throw invalid_argument("Capacidade invalida");
     }
+
 }
+
+
+
+void Codigo::validar(string valor){
+    if (!regex_match(valor, FORMATO))
+        throw invalid_argument("Codigo invalido");
+}
+/////////////////////////////////////////////////////////////////
+
+
+
+//Capacidade::Capacidade(int cap){
+//    setCap(cap);
+//}
+//
+//
+//
+//void Capacidade::setCap(int cap){
+//    switch (cap){
+//        case ACEITOS[0]:
+//        case ACEITOS[1]:
+//        case ACEITOS[2]:
+//        case ACEITOS[3]:
+//        case ACEITOS[4]:
+//            this->cap = cap;
+//        default:
+//            throw invalid_argument("Capacidade invalida");
+//    }
+//}
+
+
+
+
+
 
 Cargo::Cargo(string cargo){
     setCargo(cargo);
@@ -39,7 +73,7 @@ Cargo::Cargo(string cargo){
 
 void Cargo::validar(string cargo){
 
-    if(!(cargo.compare("ator") == PALAVRA_IGUAL || cargo.compare("figurinista") == PALAVRA_IGUAL 
+    if(!(cargo.compare("ator") == PALAVRA_IGUAL || cargo.compare("figurinista") == PALAVRA_IGUAL
     || cargo.compare("cenografo") == PALAVRA_IGUAL || cargo.compare("maquiador") == PALAVRA_IGUAL
     || cargo.compare("sonoplasta") == PALAVRA_IGUAL || cargo.compare("iluminador") == PALAVRA_IGUAL)){
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
@@ -62,7 +96,7 @@ void Classificacao::validar(string classificacao){
     || classificacao.compare("16") == CLASSIFICACAO_IGUAL || classificacao.compare("18") == CLASSIFICACAO_IGUAL)){
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
     }
-    
+
 }
 
 void Classificacao::setClassificacao(string classificacao){
@@ -74,19 +108,18 @@ void Classificacao::setClassificacao(string classificacao){
 
 
 
-//talvez colocar try-catch
-Codigo::Codigo(string cod){
-    setCod(cod);
-}
-
-
-
-void Codigo::setCod(string cod){
-    if (regex_match(cod, FORMATO))
-        this->cod = cod;
-    else
-        throw invalid_argument("Codigo invalido");
-}
+//Codigo::Codigo(string cod){
+//    setCod(cod);
+//}
+//
+//
+//
+//void Codigo::setCod(string cod){
+//    if (regex_match(cod, FORMATO))
+//        this->cod = cod;
+//    else
+//        throw invalid_argument("Codigo invalido");
+//}
 
 
 Data::Data(string dat){
@@ -163,15 +196,15 @@ void Email::validar(string email){
             do{
                 caractere = email[i];
                 i++;
-            }while(caractere != '@');   
+            }while(caractere != '@');
 
             if(email[i - 2] == '.' || email[i] == '.'){
                 throw invalid_argument("Caractere '.' em posicao invalida");
-            } 
+            }
         }
     }
 
-    
+
 }
 
 void Email::setEmail(string email){
@@ -203,7 +236,7 @@ void Matricula::validar(string matricula){
     }
     else{
         int i, j;
-        bool flag = false;    
+        bool flag = false;
 
         for(i = 0; i < matricula.length() - 1; i++){
             for(j = i + 1; j < matricula.length(); j++){
@@ -216,8 +249,8 @@ void Matricula::validar(string matricula){
 
         if(flag == true){
             throw invalid_argument("Digito duplicado");
-        }  
-    }    
+        }
+    }
 }
 
 void Matricula::setMatricula(string matricula){

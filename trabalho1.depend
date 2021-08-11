@@ -27,13 +27,13 @@
 	<stdexcept>
 	"Dominios.h"
 
-1628484626 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/main.cpp
+1628635033 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/main.cpp
 	<stdexcept>
 	<iostream>
 	<regex>
 	"Dominios.h"
 
-1628483454 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.h
+1628634785 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.h
 	<string>
 	<regex>
 
@@ -51,7 +51,9 @@
 	<stdexcept>
 	"Dominios.h"
 
-1628484230 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.cpp
+1628634926 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.cpp
 	<stdexcept>
 	"Dominios.h"
+
+1628635105 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Testes.cpp
 

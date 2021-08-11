@@ -17,10 +17,15 @@ const regex Telefone::FORMATO {"\\(([14689][1-9]|2[12478]|3[2-578]|5[13-5]|7[13-
 /////////////////////////////////////////////////
 
 
+void Dominio::setValor(string valor){
+    validar(valor);
+    this->valor = valor;
+}
 
-void Capacidade::validar(int valor){
 
-    switch (valor){
+void Capacidade::validar(string valor){
+
+    switch (stoi(valor)){
         case ACEITOS[0]:
         case ACEITOS[1]:
         case ACEITOS[2]:
@@ -35,10 +40,7 @@ void Capacidade::validar(int valor){
 
 
 
-void Codigo::validar(string valor){
-    if (!regex_match(valor, FORMATO))
-        throw invalid_argument("Codigo invalido");
-}
+
 /////////////////////////////////////////////////////////////////
 
 
@@ -67,42 +69,29 @@ void Codigo::validar(string valor){
 
 
 
-Cargo::Cargo(string cargo){
-    setCargo(cargo);
-}
+void Cargo::validar(string valor){
 
-void Cargo::validar(string cargo){
-
-    if(!(cargo.compare("ator") == PALAVRA_IGUAL || cargo.compare("figurinista") == PALAVRA_IGUAL
-    || cargo.compare("cenografo") == PALAVRA_IGUAL || cargo.compare("maquiador") == PALAVRA_IGUAL
-    || cargo.compare("sonoplasta") == PALAVRA_IGUAL || cargo.compare("iluminador") == PALAVRA_IGUAL)){
+    if(!(valor.compare("ator") == PALAVRA_IGUAL || valor.compare("figurinista") == PALAVRA_IGUAL
+    || valor.compare("cenografo") == PALAVRA_IGUAL || valor.compare("maquiador") == PALAVRA_IGUAL
+    || valor.compare("sonoplasta") == PALAVRA_IGUAL || valor.compare("iluminador") == PALAVRA_IGUAL)){
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
     }
 }
 
-void Cargo::setCargo(string cargo){
-    validar(cargo);
-    this->cargo = cargo;
-}
-
-Classificacao::Classificacao(string classificacao){
-    setClassificacao(classificacao);
-}
 
 
-void Classificacao::validar(string classificacao){
-    if(!(classificacao.compare("livre") == CLASSIFICACAO_IGUAL || classificacao.compare("10") == CLASSIFICACAO_IGUAL
-    || classificacao.compare("12") == CLASSIFICACAO_IGUAL || classificacao.compare("14") == CLASSIFICACAO_IGUAL
-    || classificacao.compare("16") == CLASSIFICACAO_IGUAL || classificacao.compare("18") == CLASSIFICACAO_IGUAL)){
+
+
+void Classificacao::validar(string valor){
+    if(!(valor.compare("livre") == CLASSIFICACAO_IGUAL || valor.compare("10") == CLASSIFICACAO_IGUAL
+    || valor.compare("12") == CLASSIFICACAO_IGUAL || valor.compare("14") == CLASSIFICACAO_IGUAL
+    || valor.compare("16") == CLASSIFICACAO_IGUAL || valor.compare("18") == CLASSIFICACAO_IGUAL)){
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
     }
 
 }
 
-void Classificacao::setClassificacao(string classificacao){
-    validar(classificacao);
-    this->classificacao = classificacao;
-}
+
 
 
 
@@ -122,21 +111,25 @@ void Classificacao::setClassificacao(string classificacao){
 //}
 
 
-Data::Data(string dat){
-    setDat(dat);
+void Codigo::validar(string valor){
+    if (!regex_match(valor, FORMATO))
+        throw invalid_argument("Codigo invalido");
 }
 
 
-void Data::setDat(string dat){
-    if (!regex_match(dat, FORMATO))
+
+
+
+void Data::validar(string valor){
+    if (!regex_match(valor, FORMATO))
         throw invalid_argument("Data invalida.");
 
     constexpr int MESES_C_30_DIAS[4] = {4, 6, 9, 11};
     bool valida = true;
     int dia, mes, ano;
-    dia = stoi(dat.substr(0, 2));
-    mes = stoi(dat.substr(3, 2));
-    ano = stoi(dat.substr(6, 4));
+    dia = stoi(valor.substr(0, 2));
+    mes = stoi(valor.substr(3, 2));
+    ano = stoi(valor.substr(6, 4));
     bool ano_bissexto = (ano % 400 == 0) || (ano % 100 != 0 && ano % 4 == 0);
 
     if (mes == 2 && (dia > 29 || (!ano_bissexto && dia == 29)))
@@ -155,27 +148,23 @@ void Data::setDat(string dat){
         }
     }
 
-    if (valida)
-        this->dat = dat;
-    else
+    if (!valida)
         throw invalid_argument("Data invalida.");
 }
 
-Email::Email(string email){
-    setEmail(email);
-}
 
-void Email::validar(string email){
-    if(!regex_match(email, FORMATO)){
+
+void Email::validar(string valor){
+    if(!regex_match(valor, FORMATO)){
         throw invalid_argument("Formato invalido");
     }
 
     bool pontoSequencia;
-    const int TAMANHO_EMAIL = email.length();
+    const int TAMANHO_EMAIL = valor.length();
     int i;
 
     for(i = 0; i < TAMANHO_EMAIL - 1; i++){
-        if(email[i] == '.' && email[i + 1] == '.'){
+        if(valor[i] == '.' && valor[i + 1] == '.'){
             pontoSequencia = true;
         }
     }
@@ -185,20 +174,20 @@ void Email::validar(string email){
     else{
         char caractere;
 
-        if (email[0] == '.'){
+        if (valor[0] == '.'){
             throw invalid_argument("Caractere '.' iniciando e-mail");
         }
-        else if (email[TAMANHO_EMAIL - 1] == '.'){
+        else if (valor[TAMANHO_EMAIL - 1] == '.'){
             throw invalid_argument("Caractere '.' finalizando e-mail");
         }
         else{
             i = 0;
             do{
-                caractere = email[i];
+                caractere = valor[i];
                 i++;
             }while(caractere != '@');
 
-            if(email[i - 2] == '.' || email[i] == '.'){
+            if(valor[i - 2] == '.' || valor[i] == '.'){
                 throw invalid_argument("Caractere '.' em posicao invalida");
             }
         }
@@ -207,40 +196,30 @@ void Email::validar(string email){
 
 }
 
-void Email::setEmail(string email){
-    validar(email);
-    this->email = email;
-}
 
 
-//talvez colocar try-catch
-Horario::Horario(string hor){
-    setHor(hor);
-}
 
 
-void Horario::setHor(string hor){
-    if (regex_match(hor, FORMATO))
-        this->hor = hor;
-    else
+
+
+void Horario::validar(string valor){
+    if (!regex_match(valor, FORMATO))
         throw invalid_argument("Horario invalido");
 }
 
-Matricula::Matricula(string matricula){
-    setMatricula(matricula);
-}
 
-void Matricula::validar(string matricula){
-    if (!regex_match(matricula, FORMATO)){
+
+void Matricula::validar(string valor){
+    if (!regex_match(valor, FORMATO)){
         throw invalid_argument("Somente sao validos digitos(0-9) no formato XXXXX");
     }
     else{
         int i, j;
         bool flag = false;
 
-        for(i = 0; i < matricula.length() - 1; i++){
-            for(j = i + 1; j < matricula.length(); j++){
-                if (matricula[i] == matricula[j]){
+        for(i = 0; i < valor.length() - 1; i++){
+            for(j = i + 1; j < valor.length(); j++){
+                if (valor[i] == valor[j]){
                     flag = true;
                     break;
                 }
@@ -253,125 +232,71 @@ void Matricula::validar(string matricula){
     }
 }
 
-void Matricula::setMatricula(string matricula){
-    validar(matricula);
-    this->matricula = matricula;
-}
+
+
 
 
 //Metodos de Nome
 
-Nome::Nome(string nome)
-{
-        setNome(nome);
-}
 
-void Nome::setNome(string nome)
+
+void Nome::validar(string valor)
 {
-    if (nome.size() < 5)
+    if (valor.size() < 5)
         throw length_error("Nome invalido (nome muito pequeno)");
-    else if (nome.size() > 20)
+    else if (valor.size() > 20)
         throw length_error("Nome invalido (nome muito grande)");
     else
-        if (regex_match(nome, FORMATO))
-                this->nome = nome;
-        else
-                throw invalid_argument("Nome invalido (formato nao suportado)");
+        if (!regex_match(valor, FORMATO))
+            throw invalid_argument("Nome invalido (formato nao suportado)");
 }
 
-string Nome::getNome()
-{
-    return nome;
-}
+
 
 //Metodos Senha
 
-Senha::Senha (string senha)
-{
-    setSenha(senha);
-}
-void Senha::setSenha(string senha)
+
+void Senha::validar(string valor)
 {
     bool charRepetido = false;
 
-    for (long long unsigned int i=0; i<senha.size(); i++)
+    for (long long unsigned int i=0; i<valor.size(); i++)
     {
-        for (long long unsigned int j=0; j<senha.size()-i-1; j++)
+        for (long long unsigned int j=0; j<valor.size()-i-1; j++)
         {
-            if (senha[i] == senha[i+j+1])
+            if (valor[i] == valor[i+j+1])
                 charRepetido = true;
         }
     }
 
-    if (charRepetido == false && regex_match(senha, FORMATO))
-            this->senha = senha;
-    else
+    if (!(charRepetido == false && regex_match(valor, FORMATO)))
         throw invalid_argument("Senha invalida");
 }
-string Senha::getSenha()
-{
-    return senha;
-}
+
+
+
 
 //Metodos Telefone
 
-Telefone::Telefone (string numeroTelefone)
+
+void Telefone::validar(string valor)
 {
-    setTelefone(numeroTelefone);
-}
-void Telefone::setTelefone(string numeroTelefone)
-{
-    if (regex_match(numeroTelefone, FORMATO))
-        this->numeroTelefone = numeroTelefone;
-    else
+    if (!regex_match(valor, FORMATO))
         throw invalid_argument("Numero de telefone invalido");
 }
-string Telefone::getTelefone()
-{
-    return numeroTelefone;
-}
+
 
 //Metodos Tipo
 
-Tipo::Tipo (string tipo)
-{
-    setTipo(tipo);
-}
-void Tipo::setTipo(string tipo)
-{
-    if(tipo.compare("auto") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("comedia") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("drama") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("farsa") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("melodrama") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("monologo") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("musical") == 0) {
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("opera") == 0){
-        this->tipo = tipo;
-    }
-    else if(tipo.compare("revista") == 0){
-        this->tipo = tipo;
-    }
-    else{
-        throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
-    }
 
-}
-string Tipo::getTipo()
+void Tipo::validar(string valor)
 {
-    return tipo;
+    if (!((valor.compare("auto") == 0)||(valor.compare("comedia") == 0)
+        ||(valor.compare("drama") == 0)||(valor.compare("farsa") == 0)
+        ||(valor.compare("melodrama") == 0)||(valor.compare("monologo") == 0)
+        ||(valor.compare("musical") == 0)||(valor.compare("opera") == 0)
+        ||(valor.compare("revista") == 0))){
+            throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
+    }
 }
+

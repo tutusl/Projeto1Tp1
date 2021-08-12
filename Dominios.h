@@ -16,6 +16,7 @@ class Dominio {
         virtual void validar(string valor) = 0;
 
     public:
+        virtual ~Dominio(){};
         void setValor(string valor);
         string getValor();
 

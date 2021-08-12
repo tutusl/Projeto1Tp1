@@ -6,80 +6,8 @@
 
 using namespace std;
 
-////////
-//////// Não prefiro
-//////// Solução mais proxima ao que o professor falou. Não usa template, e é a que precisa de
-//////// mais código reescrito
-////////
-
-class TU {
-    private:
-        virtual void setUp() = 0;                   //
-        virtual void tearDown() = 0;                // Esses metodos tem que ser definidos
-        virtual void testarCenarioSucesso() = 0;    // em cada classe filha
-        virtual void testarCenarioFalha() = 0;      //
-
-    protected:
-        int estado;
-
-    public:
-        static const int SUCESSO = 0;
-        static const int FALHA = -1;
-        int run();
-};
-
-class TUCapacidade: public TU {
-    private:
-        Capacidade *unidade;
-        static const string VALOR_VALIDO = "100";
-        static const string VALOR_INVALIDO = "50";
-        void setUp() override;                      //
-        void tearDown() override;                   // Metodos que tem que ser definidos
-        void testarCenarioSucesso() override;       // por essa classe
-        void testarCenarioFalha() override;         //
-};
 
 
-
-////////
-//////// Não prefiro
-//////// Solução básica com template. Ainda tem código reescrito, mas menos
-//////// que a anterior
-////////
-
-template<class T>
-class TU {
-    private:
-        void setUp();
-        void tearDown();
-        virtual void testarCenarioSucesso() = 0;    // Esse metodos tem que ser definidos
-        virtual void testarCenarioFalha() = 0;      // em cada classe filha
-
-    protected:
-        int estado;
-        T *unidade;
-
-    public:
-        static const int SUCESSO = 0;
-        static const int FALHA = -1;
-        int run();
-};
-
-class TUCapacidade: public TU<Capacidade> {
-    private:
-        static const string VALOR_VALIDO = "100";
-        static const string VALOR_INVALIDO = "50";
-        void testarCenarioSucesso() override;       // Metodos que tem que ser definidos
-        void testarCenarioFalha() override;         // por essa classe
-};
-
-
-
-////////
-//////// Eu prefiro
-//////// Das duas soluções que eu prefiro, essa usa menos gambiarra, mas
-//////// os valores valido e invalido não são atributos de classe
-////////
 
 template<class T>
 class TU {
@@ -88,55 +16,41 @@ class TU {
         const string VALOR_INVALIDO;
         T *unidade;
         int estado;
-        void setUp();                               //
-        void tearDown();                            // Esses metodos so serão definidos uma vez
-        void testarCenarioSucesso();                // no header
-        void testarCenarioFalha();                  //
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
 
     public:
-        TU (string valorValido, string valorInvalido)
-            : VALOR_VALIDO(valorValido), VALOR_INVALIDO(valorInvalid) {}
+        TU(string valorValido, string valorInvalido);
+        virtual ~TU(){};
         static const int SUCESSO = 0;
         static const int FALHA = -1;
         int run();
 };
-
-class TUCapacidade: public TU<Capacidade> {
-    public:
-        Capacidade (string valorValido="100", string valorInvalido="50")
-            : TU (valorValido, valorInvalido) {}
-};
-
-
-
-
-////////
-//////// Eu prefiro
-//////// Das duas soluções que eu prefiro, essa tem mais gambiarra,
-//////// mas os valores valido e invalido sao atributos de classe
-////////
 
 template<class T>
-class TU {
-    private:
-        T *unidade;
-        int estado;
-        void setUp();                               //
-        void tearDown();                            //
-        void testarCenarioSucesso();                //
-        void testarCenarioFalha();                  //
+TU<T>::TU(string valorValido, string valorInvalido)
+    : VALOR_VALIDO{valorValido}, VALOR_INVALIDO{valorInvalido}
+{}
 
-    public:
-        static const int SUCESSO = 0;
-        static const int FALHA = -1;
-        int run();
-};
 
-template<class T, class U>
-void TU<T, U>::testarCenarioSucesso(){
+template<class T>
+void TU<T>::setUp(){
+    unidade = new T();
+    estado = SUCESSO;
+}
+
+template<class T>
+void TU<T>::tearDown(){
+    delete unidade;
+}
+
+template<class T>
+void TU<T>::testarCenarioSucesso(){
     try{
-        unidade->setValor(U::VALOR_VALIDO);         // Essa é a gambiarra.
-        if (unidade->getValor() != U::VALOR_VALIDO) //
+        unidade->setValor(VALOR_VALIDO);
+        if (unidade->getValor() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument &exc){
@@ -144,64 +58,110 @@ void TU<T, U>::testarCenarioSucesso(){
     }
 }
 
-class TUCapacidade: TU<Capacidade, TUCapacidade> {
-    private:
-        static const string VALOR_VALIDO = "100";
-        static const string VALOR_INVALIDO = "50";
-};
-
-
-
-
-
-
-
-
-
-
-//Ignore isso
-/*
 template<class T>
-class TU {
-    private:
-        T *unidade;
-        int estado;
-        void setUp();
-        void tearDown();
-        void testarCenarioSucesso();
-        void testarCenarioFalha();
-
-    public:
-        static const int SUCESSO = 0;
-        static const int FALHA = -1;
-        int run();
-};
-
-
-template <class T>
-void TU<T>::setUp(){
-    unidade = new T();
-    estado = SUCESSO;
+void TU<T>::testarCenarioFalha(){
+    try{
+        unidade->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &exc){
+        if (unidade->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
 }
 
 
-template <class T>
+template<class T>
 int TU<T>::run(){
-    cout << "teste";
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
 }
 
 
 class TUCapacidade: public TU<Capacidade> {
-    private:
-}
-
-*/
-
+    public:
+        TUCapacidade();
+};
 
 
+class TUCargo: public TU<Cargo> {
+    public:
+        TUCargo();
+};
 
 
 
+class TUClassificacao: public TU<Classificacao> {
+    public:
+        TUClassificacao();
+};
+
+
+
+class TUCodigo: public TU<Codigo> {
+    public:
+        TUCodigo();
+
+};
+
+
+
+class TUData: public TU<Data> {
+    public:
+        TUData();
+
+};
+
+
+class TUEmail: public TU<Email> {
+    public:
+        TUEmail();
+
+};
+
+
+class TUHorario: public TU<Horario> {
+    public:
+        TUHorario();
+
+};
+
+
+class TUMatricula: public TU<Matricula> {
+    public:
+        TUMatricula();
+
+};
+
+
+class TUNome: public TU<Nome> {
+    public:
+        TUNome();
+
+};
+
+
+class TUSenha: public TU<Senha> {
+    public:
+        TUSenha();
+
+};
+
+class TUTelefone: public TU<Telefone> {
+    public:
+        TUTelefone();
+
+};
+
+
+class TUTipo: public TU<Tipo> {
+    public:
+        TUTipo();
+
+};
 
 
 #endif

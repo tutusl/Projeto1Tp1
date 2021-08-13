@@ -67,13 +67,13 @@ void Capacidade::validar(string valor){
 
 
 void Cargo::validar(string valor){
-    if(valor == "ator" || valor == "figurinista" || valor == "cenografo" 
-    || valor == "maquiador" || valor == "sonoplasta" || valor == "iluminador")
+    if(!(valor == "ator" || valor == "figurinista" || valor == "cenografo" 
+    || valor == "maquiador" || valor == "sonoplasta" || valor == "iluminador"))
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
 }
 
 void Classificacao::validar(string valor){
-    if(valor == "livre" || valor == "10" || valor == "12" || valor == "14" || valor == "16" || valor == "18")
+    if(!(valor == "livre" || valor == "10" || valor == "12" || valor == "14" || valor == "16" || valor == "18"))
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
 }
 
@@ -293,9 +293,9 @@ void Telefone::validar(string valor)
 //Metodos Tipo
 
 void Tipo::validar(string valor){
-    if(valor == "auto" || valor == "comedia" || valor == "drama" || valor == "farsa" 
+    if(!(valor == "auto" || valor == "comedia" || valor == "drama" || valor == "farsa" 
     || valor == "melodrama" || valor == "monologo" || valor == "musical" || valor == "opera" 
-    || valor == "revista" )
+    || valor == "revista" ))
         throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
 }
 /*

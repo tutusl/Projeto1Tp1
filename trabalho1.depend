@@ -63,3 +63,31 @@
 	<string>
 	"Dominios.h"
 
+1628866944 source:/home/no1/Programs/TP1/Projeto1Tp1/Dominios.cpp
+	<stdexcept>
+	"Dominios.h"
+
+1628866944 /home/no1/Programs/TP1/Projeto1Tp1/Dominios.h
+	<string>
+	<regex>
+
+1628866944 source:/home/no1/Programs/TP1/Projeto1Tp1/Entidades.cpp
+	"Entidades.h"
+
+1628866944 /home/no1/Programs/TP1/Projeto1Tp1/Entidades.h
+	"Dominios.h"
+
+1628866944 source:/home/no1/Programs/TP1/Projeto1Tp1/main.cpp
+	<stdexcept>
+	<iostream>
+	<regex>
+	"Dominios.h"
+	"Testes.h"
+
+1628866944 /home/no1/Programs/TP1/Projeto1Tp1/Testes.h
+	<string>
+	"Dominios.h"
+
+1628866944 source:/home/no1/Programs/TP1/Projeto1Tp1/Testes.cpp
+	"Testes.h"
+

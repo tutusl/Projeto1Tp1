@@ -44,7 +44,7 @@ class Capacidade: public Dominio {
 class Cargo: public Dominio {
     //Henrique
     private:
-        static const bool PALAVRA_IGUAL = 0;
+//        static const bool PALAVRA_IGUAL = 0;
         void validar(string valor);
 };
 
@@ -74,7 +74,7 @@ class Cargo: public Dominio {
 class Classificacao: public Dominio {
     //Henrique
     private:
-        static const bool CLASSIFICACAO_IGUAL = 0;
+//        static const bool CLASSIFICACAO_IGUAL = 0;
         void validar(string valor) override;
 };
 

@@ -66,9 +66,18 @@ void Capacidade::validar(string valor){
 
 
 
+void Cargo::validar(string valor){
+    if(valor == "ator" || valor == "figurinista" || valor == "cenografo" 
+    || valor == "maquiador" || valor == "sonoplasta" || valor == "iluminador")
+        throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
+}
 
+void Classificacao::validar(string valor){
+    if(valor == "livre" || valor == "10" || valor == "12" || valor == "14" || valor == "16" || valor == "18")
+        throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
+}
 
-
+/*
 void Cargo::validar(string valor){
 
     if(!(valor.compare("ator") == PALAVRA_IGUAL || valor.compare("figurinista") == PALAVRA_IGUAL
@@ -77,10 +86,6 @@ void Cargo::validar(string valor){
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
     }
 }
-
-
-
-
 
 void Classificacao::validar(string valor){
     if(!(valor.compare("livre") == CLASSIFICACAO_IGUAL || valor.compare("10") == CLASSIFICACAO_IGUAL
@@ -91,7 +96,7 @@ void Classificacao::validar(string valor){
 
 }
 
-
+*/
 
 
 

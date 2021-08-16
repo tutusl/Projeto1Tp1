@@ -36,13 +36,13 @@ TU<T>::TU(string valorValido, string valorInvalido)
 
 
 template<class T>
-void TU<T>::setUp(){
+inline void TU<T>::setUp(){
     unidade = new T();
     estado = SUCESSO;
 }
 
 template<class T>
-void TU<T>::tearDown(){
+inline void TU<T>::tearDown(){
     delete unidade;
 }
 

@@ -1,9 +1,7 @@
 #include "Testes.h"
 
 
-//TUCapacidade::TUCapacidade(string valorValido="100", string valorInvalido="50")
-//    : TU (valorValido, valorInvalido)
-//{}
+
 
 TUCapacidade::TUCapacidade()
     : TU ("100", "50")
@@ -46,7 +44,7 @@ TUHorario::TUHorario()
 
 
 TUMatricula::TUMatricula()
-    : TU ("12345", "5000abc")
+    : TU ("12345", "50210")
 {}
 
 

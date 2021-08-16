@@ -7,8 +7,8 @@ const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([0-1][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Matricula::FORMATO {"[0-9]{5}"};
 const regex Data::FORMATO {"(0[1-9]|[1-2][0-9]|3[0-1])\\/(0[1-9]|1[0-2])\\/([2-9][0-9]{3})"};
-const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+\\-/=?^_`{|}~]{1,64}()[@][A-Za-z0-9!#$%&'*+\\-/=?^_`{|}~]{1,255}"};
-const regex Nome::FORMATO {"([A-Z]\.?(([A-Za-z]\.?)+|[A-Za-z]*)\s?)+"};  //{"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"}; 
+const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+\\-\\/=?^_`{|}~.]{1,64}[@][A-Za-z0-9!#$%&'*+\\-\\/=?^_`{|}~.]{1,255}"};
+const regex Nome::FORMATO {"([A-Z]\\.?(([A-Za-z]\\.?)+|[A-Za-z]*)\\s?)+"};  //{"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 // O primeiro permite letras minusculas após ponto, o comentado não ^ By: Jão
 const regex Senha::FORMATO {"(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\\s]){8}"};
 const regex Telefone::FORMATO {"\\(([14689][1-9]|2[12478]|3[2-578]|5[13-5]|7[13-579])\\)\\-(?!0{9})[\\d]{9}"};
@@ -67,7 +67,7 @@ void Capacidade::validar(string valor){
 
 
 void Cargo::validar(string valor){
-    if(!(valor == "ator" || valor == "figurinista" || valor == "cenografo" 
+    if(!(valor == "ator" || valor == "figurinista" || valor == "cenografo"
     || valor == "maquiador" || valor == "sonoplasta" || valor == "iluminador"))
         throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
 }
@@ -160,45 +160,30 @@ void Data::validar(string valor){
 
 
 void Email::validar(string valor){
-    if(!regex_match(valor, FORMATO)){
+    if(!regex_match(valor, FORMATO))
         throw invalid_argument("Formato invalido");
-    }
 
-    bool pontoSequencia;
     const int TAMANHO_EMAIL = valor.length();
     int i;
 
     for(i = 0; i < TAMANHO_EMAIL - 1; i++){
-        if(valor[i] == '.' && valor[i + 1] == '.'){
-            pontoSequencia = true;
-        }
-    }
-    if(pontoSequencia){
-        throw invalid_argument("Caractere '.' usado em sequencia");
-    }
-    else{
-        char caractere;
-
-        if (valor[0] == '.'){
-            throw invalid_argument("Caractere '.' iniciando e-mail");
-        }
-        else if (valor[TAMANHO_EMAIL - 1] == '.'){
-            throw invalid_argument("Caractere '.' finalizando e-mail");
-        }
-        else{
-            i = 0;
-            do{
-                caractere = valor[i]; 
-                i++;
-            }while(caractere != '@');
-
-            if(valor[i - 2] == '.' || valor[i] == '.'){    //checa se o ponto estiver antes ou depois do arroba
-                throw invalid_argument("Caractere '.' em posicao invalida");
-            }
-        }
+        if(valor[i] == '.' && valor[i + 1] == '.')
+            throw invalid_argument("Caractere '.' usado em sequencia");
     }
 
+    char caractere;
 
+    if ((valor[0] == '.')||(valor[TAMANHO_EMAIL - 1] == '.'))
+        throw invalid_argument("Caractere '.' iniciando e-mail");
+
+    i = 0;
+    do{
+        caractere = valor[i];
+        i++;
+    } while(caractere != '@');
+
+    if(valor[i - 2] == '.' || valor[i] == '.')    //checa se o ponto estiver antes ou depois do arroba
+        throw invalid_argument("Caractere '.' em posicao invalida");
 }
 
 
@@ -215,24 +200,15 @@ void Horario::validar(string valor){
 
 
 void Matricula::validar(string valor){
-    if (!regex_match(valor, FORMATO)){
+    if (!regex_match(valor, FORMATO))
         throw invalid_argument("Somente sao validos digitos(0-9) no formato XXXXX");
-    }
-    else{
-        int i, j;
-        bool flag = false;
 
-        for(i = 0; i < valor.length() - 1; i++){
-            for(j = i + 1; j < valor.length(); j++){
-                if (valor[i] == valor[j]){
-                    flag = true;
-                    break;
-                }
-            }
-        }
+    int i, j;
 
-        if(flag == true){
-            throw invalid_argument("Digito duplicado");
+    for(i = 0; i < static_cast<int>(valor.length()) - 1; i++){
+        for(j = i + 1; j < static_cast<int>(valor.length()); j++){
+            if (valor[i] == valor[j])
+                throw invalid_argument("Digito duplicado");
         }
     }
 }
@@ -264,9 +240,9 @@ void Senha::validar(string valor)
 {
     bool charRepetido = false;
 
-    for (long long unsigned int i=0; i<valor.size(); i++)
+    for (int i=0; i < static_cast<int>(valor.size()); i++)
     {
-        for (long long unsigned int j=0; j<valor.size()-i-1; j++)
+        for (int j=0; j < static_cast<int>(valor.size())-i-1; j++)
         {
             if (valor[i] == valor[i+j+1])
                 charRepetido = true;
@@ -293,8 +269,8 @@ void Telefone::validar(string valor)
 //Metodos Tipo
 
 void Tipo::validar(string valor){
-    if(!(valor == "auto" || valor == "comedia" || valor == "drama" || valor == "farsa" 
-    || valor == "melodrama" || valor == "monologo" || valor == "musical" || valor == "opera" 
+    if(!(valor == "auto" || valor == "comedia" || valor == "drama" || valor == "farsa"
+    || valor == "melodrama" || valor == "monologo" || valor == "musical" || valor == "opera"
     || valor == "revista" ))
         throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
 }

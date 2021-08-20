@@ -2,65 +2,70 @@
 #include <iostream>
 #include <regex>
 #include "Dominios.h"
+#include "Entidades.h"
 #include "Testes.h"
 
 using namespace std;
 
 
 template<class T>
-void test(){
+void test(string unidade){
+    cout << unidade;
     T *teste = new T();
     switch(teste->run()){
         case T::SUCESSO:
-            cout << " Sucesso\n";
+            cout << " Sucesso" << endl;
             break;
         case T::FALHA:
-            cout << " Falha\n";
+            cout << " Falha" << endl;
             break;
     }
     delete teste;
 }
 
 
+
+
 int main()
 {
     // Testes de unidade
 
-    cout << "Capacidade";
-    test<TUCapacidade>();
+    cout << "Dominios:" << endl;
 
-    cout << "Cargo";
-    test<TUCargo>();
+    test<TUCapacidade>("Capacidade");
 
-    cout << "Classificacao";
-    test<TUClassificacao>();
+    test<TUCargo>("Cargo");
 
-    cout << "Codigo";
-    test<TUCodigo>();
+    test<TUClassificacao>("Classificacao");
 
-    cout << "Data";
-    test<TUData>();
+    test<TUCodigo>("Codigo");
 
-    cout << "Email";
-    test<TUEmail>();
+    test<TUData>("Data");
 
-    cout << "Horario";
-    test<TUHorario>();
+    test<TUEmail>("Email");
 
-    cout << "Matricula";
-    test<TUMatricula>();
+    test<TUHorario>("Horario");
 
-    cout << "Nome";
-    test<TUNome>();
+    test<TUMatricula>("Matricula");
 
-    cout << "Senha";
-    test<TUSenha>();
+    test<TUNome>("Nome");
 
-    cout << "Telefone";
-    test<TUTelefone>();
+    test<TUSenha>("Senha");
 
-    cout << "Tipo";
-    test<TUTipo>();
+    test<TUTelefone>("Telefone");
+
+    test<TUTipo>("Tipo");
+
+    cout << endl << "Entidades:" << endl;
+
+    test<TUParticipante>("Participante");
+
+    test<TUPeca>("Peca");
+
+    test<TUSessao>("Sessao");
+
+    test<TUSala>("Sala");
+
 
     return 0;
 }

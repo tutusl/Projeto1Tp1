@@ -60,7 +60,8 @@ inline string Dominio::getValor(){
 class Capacidade: public Dominio {
     //Luiz
     private:
-        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
+        static const regex FORMATO;
+//        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
         void validar(string valor) override;
 };
 
@@ -74,7 +75,6 @@ class Capacidade: public Dominio {
 class Cargo: public Dominio {
     //Henrique
     private:
-//        static const bool PALAVRA_IGUAL = 0;
         void validar(string valor);
 };
 
@@ -110,7 +110,6 @@ class Cargo: public Dominio {
 class Classificacao: public Dominio {
     //Henrique
     private:
-//        static const bool CLASSIFICACAO_IGUAL = 0;
         void validar(string valor) override;
 };
 

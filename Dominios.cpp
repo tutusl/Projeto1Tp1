@@ -3,6 +3,7 @@
 
 using namespace std;
 
+const regex Capacidade::FORMATO {"[1-5]00"};
 const regex Codigo::FORMATO {"[A-Z]{2}[0-9]{4}"};
 const regex Horario::FORMATO {"([0-1][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Matricula::FORMATO {"[0-9]{5}"};
@@ -24,18 +25,8 @@ void Dominio::setValor(string valor){
 
 
 void Capacidade::validar(string valor){
-
-    switch (stoi(valor)){
-        case ACEITOS[0]:
-        case ACEITOS[1]:
-        case ACEITOS[2]:
-        case ACEITOS[3]:
-        case ACEITOS[4]:
-            break;
-        default:
-            throw invalid_argument("Capacidade invalida");
-    }
-
+    if (!regex_match(valor, FORMATO))
+        throw invalid_argument("Capacidade invalida");
 }
 
 

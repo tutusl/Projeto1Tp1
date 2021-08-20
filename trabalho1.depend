@@ -27,14 +27,15 @@
 	<stdexcept>
 	"Dominios.h"
 
-1628741579 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/main.cpp
+1629490563 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/main.cpp
 	<stdexcept>
 	<iostream>
 	<regex>
 	"Dominios.h"
+	"Entidades.h"
 	"Testes.h"
 
-1629085992 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.h
+1629437186 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.h
 	<string>
 	<regex>
 
@@ -52,16 +53,17 @@
 	<stdexcept>
 	"Dominios.h"
 
-1629086134 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.cpp
+1629437223 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Dominios.cpp
 	<stdexcept>
 	"Dominios.h"
 
-1629086238 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Testes.cpp
+1629485806 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Testes.cpp
 	"Testes.h"
 
-1628739526 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Testes.h
+1629485829 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Testes.h
 	<string>
 	"Dominios.h"
+	"Entidades.h"
 
 1628866944 source:/home/no1/Programs/TP1/Projeto1Tp1/Dominios.cpp
 	<stdexcept>
@@ -94,6 +96,6 @@
 1628741579 source:/home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Entidades.cpp
 	"Entidades.h"
 
-1629079963 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Entidades.h
+1629490596 /home/luiz/Desktop/UnB/TP1/Projeto1Tp1/Entidades.h
 	"Dominios.h"
 

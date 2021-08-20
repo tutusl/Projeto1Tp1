@@ -6,9 +6,6 @@
 
 
 
-
-
-
 class Participante {
     private:
         Matricula matricula;
@@ -20,39 +17,110 @@ class Participante {
         Cargo cargo;
 
     public:
-        void setMatricula(Matricula valor);
+        void setMatricula(const Matricula &valor);
         Matricula getMatricula();
 
-        void setNome(Nome valor);
+        void setNome(const Nome &valor);
         Nome getNome();
 
-        void setSobrenome(Nome valor);
+        void setSobrenome(const Nome &valor);
         Nome getSobrenome();
 
-        void setEmail(Email valor);
+        void setEmail(const Email &valor);
         Email getEmail();
 
-        void setTelefone(Telefone valor);
+        void setTelefone(const Telefone &valor);
         Telefone getTelefone();
 
-        void setSenha(Senha valor);
+        void setSenha(const Senha &valor);
         Senha getSenha();
 
-        void setCargo(Cargo valor);
+        void setCargo(const Cargo &valor);
         Cargo getCargo();
 };
 
 
+class Peca {
+    private:
+        Codigo identificador;
+        Nome nome;
+        Tipo tipo;
+        Classificacao classificacao;
+
+    public:
+        void setIdentificador(const Codigo &valor);
+        Codigo getIdentificador();
+
+        void setNome(const Nome &valor);
+        Nome getNome();
+
+        void setTipo(const Tipo &valor);
+        Tipo getTipo();
+
+        void setClassificacao(const Classificacao &valor);
+        Classificacao getClassificacao();
+};
 
 
+class Sessao {
+    private:
+        Codigo identificador;
+        Data data;
+        Horario horario;
+
+    public:
+        void setIdentificador(const Codigo &valor);
+        Codigo getIdentificador();
+
+        void setData(const Data &valor);
+        Data getData();
+
+        void setHorario(const Horario &valor);
+        Horario getHorario();
+};
 
 
+class Sala {
+    private:
+        Codigo identificador;
+        Nome nome;
+        Capacidade capacidade;
+
+    public:
+        void setIdentificador(const Codigo &valor);
+        Codigo getIdentificador();
+
+        void setNome(const Nome &valor);
+        Nome getNome();
+
+        void setCapacidade(const Capacidade &valor);
+        Capacidade getCapacidade();
+};
 
 
+inline void Sala::setIdentificador(const Codigo &valor){
+    identificador = valor;
+}
+
+inline Codigo Sala::getIdentificador(){
+    return identificador;
+}
 
 
+inline void Sala::setNome(const Nome &valor){
+    nome = valor;
+}
+
+inline Nome Sala::getNome(){
+    return nome;
+}
 
 
+inline void Sala::setCapacidade(const Capacidade &valor){
+    capacidade = valor;
+}
 
-
+inline Capacidade Sala::getCapacidade(){
+    return capacidade;
+}
 #endif

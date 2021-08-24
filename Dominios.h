@@ -78,29 +78,6 @@ class Cargo: public Dominio {
         void validar(string valor);
 };
 
-
-
-
-
-
-
-
-//class Cargo {
-//    //Henrique
-//    private:
-//        string cargo;
-//
-//    public:
-//        Cargo(string cargo);
-//        void setCargo(string cargo);
-//        string getCargo();
-//};
-//
-//inline string Cargo::getCargo(){
-//    return cargo;
-//}
-
-
 ///
 /// Classe para representar classificação.
 /// Regras de formato:
@@ -112,26 +89,6 @@ class Classificacao: public Dominio {
     private:
         void validar(string valor) override;
 };
-
-
-
-
-//class Classificacao {
-//    //Henrique
-//    private:
-//        string classificacao;
-//        void validar(string classificacao);
-//        static const bool CLASSIFICACAO_IGUAL = 0;
-//    public:
-//        Classificacao(string classificacao);
-//        void setClassificacao(string classificacao);
-//        string getClassificacao();
-//};
-//
-//inline string Classificacao::getClassificacao(){
-//    return classificacao;
-//}
-
 
 ///
 /// Classe para representar código.
@@ -147,7 +104,6 @@ class Codigo: public Dominio {
         static const regex FORMATO;
         void validar(string valor) override;
 };
-
 
 ///
 /// Classe para representar data.
@@ -184,25 +140,6 @@ class Email: public Dominio {
         void validar(string valor) override;
 };
 
-
-
-//class Email {
-//    //Henrique
-//    private:
-//        string email;
-//        void validar(string email);
-//        static const regex FORMATO;
-//    public:
-//        Email(string email);
-//        void setEmail(string email);
-//        string getEmail();
-//};
-//
-//inline string Email::getEmail(){
-//    return email;
-//}
-
-
 ///
 /// Classe para representar horário.
 /// Regras de formato:
@@ -233,26 +170,6 @@ class Matricula: public Dominio {
         void validar(string valor) override;
 };
 
-
-
-
-//class Matricula {
-//    // Henrique
-//    private:
-//        string matricula;
-//        static const regex FORMATO;
-//        void validar(string matricula);
-//    public:
-//        Matricula(string matricula);
-//        void setMatricula(string matricula);
-//        string getMatricula();
-//};
-//
-//inline string Matricula::getMatricula(){
-//    return matricula;
-//}
-
-
 ///
 /// Classe para representar Nome.
 /// Regras de formato:
@@ -270,21 +187,6 @@ class Nome: public Dominio {
         void validar(string valor) override;
 };
 
-
-
-
-//class Nome {
-//    // Arthur
-//    private:
-//        string nome;
-//        static const regex FORMATO;
-//    public:
-//        Nome(string nome);
-//        void setNome(string nome);
-//        string getNome();
-//};
-
-
 ///
 /// Classe para representar Senha.
 /// Regras de formato:
@@ -301,21 +203,16 @@ class Senha: public Dominio {
         void validar(string valor) override;
 };
 
-
-//class Senha {
-//    // Arthur
-//    private:
-//        string senha;
-//        static const regex FORMATO;
-//    public:
-//        Senha (string senha);
-//        void setSenha(string senha);
-//        string getSenha();
-//};
-
-
-
-
+///
+/// Classe para representar Telefone.
+/// Regras de formato:
+/// - Telefone é válido se for igual a (XX)-YYYYYYYYY.
+/// - XX é um dos seguintes códigos 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33, 
+/// 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 
+/// 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99.
+/// - Cada Y é dígito (0-9)
+/// - Não existe número de telefone 000000000.
+///
 
 class Telefone: public Dominio {
     // Arthur
@@ -324,35 +221,16 @@ class Telefone: public Dominio {
         void validar(string valor) override;
 };
 
-
-//class Telefone {
-//    // Arthur
-//    private:
-//        string numeroTelefone;
-//        static const regex FORMATO;
-//    public:
-//        Telefone (string numeroTelefone);
-//        void setTelefone(string numeroTelefone);
-//        string getTelefone();
-//};
-
-
+///
+/// Classe para representar Tipo.
+/// Regras de formato:
+/// - Tipo é válido se for igual a auto, comédia, drama, farsa, melodrama, monólogo, musical, ópera, revista.
+///
 
 class Tipo: public Dominio {
     // Arthur
     private:
         void validar(string valor) override;
 };
-
-
-//class Tipo {
-//    // Arthur
-//    private:
-//        string tipo;
-//    public:
-//        Tipo (string tipo);
-//        void setTipo(string tipo);
-//        string getTipo();
-//};
 
 #endif // DOMINIOS_H

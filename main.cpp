@@ -7,7 +7,6 @@
 
 using namespace std;
 
-
 template<class T>
 void test(string unidade){
     cout << unidade;
@@ -22,9 +21,6 @@ void test(string unidade){
     }
     delete teste;
 }
-
-
-
 
 int main()
 {

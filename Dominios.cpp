@@ -9,13 +9,9 @@ const regex Horario::FORMATO {"([0-1][0-9]|2[0-3]):(00|15|30|45)"};
 const regex Matricula::FORMATO {"[0-9]{5}"};
 const regex Data::FORMATO {"(0[1-9]|[1-2][0-9]|3[0-1])\\/(0[1-9]|1[0-2])\\/([2-9][0-9]{3})"};
 const regex Email::FORMATO {"[A-Za-z0-9!#$%&'*+\\-\\/=?^_`{|}~.]{1,64}[@][A-Za-z0-9!#$%&'*+\\-\\/=?^_`{|}~.]{1,255}"};
-const regex Nome::FORMATO {"([A-Z]\\.?(([A-Za-z]\\.?)+|[A-Za-z]*)\\s?)+"};  //{"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
-// O primeiro permite letras minusculas após ponto, o comentado não ^ By: Jão
+const regex Nome::FORMATO {"([A-Z]\\.?([A-Za-z]+\\.?|[A-Za-z]*)\\s?)+"};
 const regex Senha::FORMATO {"(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&?])([^\\s]){8}"};
 const regex Telefone::FORMATO {"\\(([14689][1-9]|2[12478]|3[2-578]|5[13-5]|7[13-579])\\)\\-(?!0{9})[\\d]{9}"};
-
-
-/////////////////////////////////////////////////
 
 
 void Dominio::setValor(string valor){
@@ -29,34 +25,6 @@ void Capacidade::validar(string valor){
         throw invalid_argument("Capacidade invalida");
 }
 
-
-
-
-/////////////////////////////////////////////////////////////////
-
-
-
-//Capacidade::Capacidade(int cap){
-//    setCap(cap);
-//}
-//
-//
-//
-//void Capacidade::setCap(int cap){
-//    switch (cap){
-//        case ACEITOS[0]:
-//        case ACEITOS[1]:
-//        case ACEITOS[2]:
-//        case ACEITOS[3]:
-//        case ACEITOS[4]:
-//            this->cap = cap;
-//        default:
-//            throw invalid_argument("Capacidade invalida");
-//    }
-//}
-
-
-
 void Cargo::validar(string valor){
     if(!(valor == "ator" || valor == "figurinista" || valor == "cenografo"
     || valor == "maquiador" || valor == "sonoplasta" || valor == "iluminador"))
@@ -68,53 +36,10 @@ void Classificacao::validar(string valor){
         throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
 }
 
-/*
-void Cargo::validar(string valor){
-
-    if(!(valor.compare("ator") == PALAVRA_IGUAL || valor.compare("figurinista") == PALAVRA_IGUAL
-    || valor.compare("cenografo") == PALAVRA_IGUAL || valor.compare("maquiador") == PALAVRA_IGUAL
-    || valor.compare("sonoplasta") == PALAVRA_IGUAL || valor.compare("iluminador") == PALAVRA_IGUAL)){
-        throw invalid_argument("Cargo invalido (O cargo deve ser digitado sem acentos e em minusculo)");
-    }
-}
-
-void Classificacao::validar(string valor){
-    if(!(valor.compare("livre") == CLASSIFICACAO_IGUAL || valor.compare("10") == CLASSIFICACAO_IGUAL
-    || valor.compare("12") == CLASSIFICACAO_IGUAL || valor.compare("14") == CLASSIFICACAO_IGUAL
-    || valor.compare("16") == CLASSIFICACAO_IGUAL || valor.compare("18") == CLASSIFICACAO_IGUAL)){
-        throw invalid_argument("A classificacao inserida nao faz parte das classificacoes indicadas");
-    }
-
-}
-
-*/
-
-
-
-
-
-//Codigo::Codigo(string cod){
-//    setCod(cod);
-//}
-//
-//
-//
-//void Codigo::setCod(string cod){
-//    if (regex_match(cod, FORMATO))
-//        this->cod = cod;
-//    else
-//        throw invalid_argument("Codigo invalido");
-//}
-
-
 void Codigo::validar(string valor){
     if (!regex_match(valor, FORMATO))
         throw invalid_argument("Codigo invalido");
 }
-
-
-
-
 
 void Data::validar(string valor){
     if (!regex_match(valor, FORMATO))
@@ -148,8 +73,6 @@ void Data::validar(string valor){
         throw invalid_argument("Data invalida.");
 }
 
-
-
 void Email::validar(string valor){
     if(!regex_match(valor, FORMATO))
         throw invalid_argument("Formato invalido");
@@ -177,18 +100,10 @@ void Email::validar(string valor){
         throw invalid_argument("Caractere '.' em posicao invalida");
 }
 
-
-
-
-
-
-
 void Horario::validar(string valor){
     if (!regex_match(valor, FORMATO))
         throw invalid_argument("Horario invalido");
 }
-
-
 
 void Matricula::validar(string valor){
     if (!regex_match(valor, FORMATO))
@@ -204,14 +119,6 @@ void Matricula::validar(string valor){
     }
 }
 
-
-
-
-
-//Metodos de Nome
-
-
-
 void Nome::validar(string valor)
 {
     if (valor.size() < 5)
@@ -221,11 +128,6 @@ void Nome::validar(string valor)
     if (!regex_match(valor, FORMATO))
             throw invalid_argument("Nome invalido (formato nao suportado)");
 }
-
-
-
-//Metodos Senha
-
 
 void Senha::validar(string valor)
 {
@@ -244,20 +146,11 @@ void Senha::validar(string valor)
         throw invalid_argument("Senha invalida");
 }
 
-
-
-
-//Metodos Telefone
-
-
 void Telefone::validar(string valor)
 {
     if (!regex_match(valor, FORMATO))
         throw invalid_argument("Numero de telefone invalido");
 }
-
-
-//Metodos Tipo
 
 void Tipo::validar(string valor){
     if(!(valor == "auto" || valor == "comedia" || valor == "drama" || valor == "farsa"
@@ -265,15 +158,3 @@ void Tipo::validar(string valor){
     || valor == "revista" ))
         throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
 }
-/*
-void Tipo::validar(string valor)
-{
-    if (!((valor.compare("auto") == 0)||(valor.compare("comedia") == 0)
-        ||(valor.compare("drama") == 0)||(valor.compare("farsa") == 0)
-        ||(valor.compare("melodrama") == 0)||(valor.compare("monologo") == 0)
-        ||(valor.compare("musical") == 0)||(valor.compare("opera") == 0)
-        ||(valor.compare("revista") == 0))){
-            throw invalid_argument("Tipo invalido (O tipo deve ser digitado sem acentos e em minusculo)");
-    }
-}
-*/

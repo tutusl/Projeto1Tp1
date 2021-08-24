@@ -3,9 +3,6 @@
 #ifndef ENTIDADES_H
 #define ENTIDADES_H
 
-
-
-
 class Participante {
     private:
         Matricula matricula;
@@ -39,6 +36,61 @@ class Participante {
         Cargo getCargo();
 };
 
+inline void Participante::setMatricula(const Matricula &valor){
+    matricula = valor; 
+}
+
+inline Matricula Participante::getMatricula(){
+    return matricula; 
+}
+
+inline void Participante::setNome(const Nome &valor){
+    nome = valor; 
+}
+
+inline Nome Participante::getNome(){
+    return nome;
+}
+
+inline void Participante::setSobrenome(const Nome &valor){
+    sobrenome = valor; 
+}
+
+inline Nome Participante::getSobrenome(){
+    return sobrenome;
+}
+
+inline void Participante::setEmail(const Email &valor){
+    email = valor; 
+}
+
+inline Email Participante::getEmail(){
+    return email;
+}
+
+inline void Participante::setTelefone(const Telefone &valor){
+    telefone = valor; 
+}
+
+inline Telefone Participante::getTelefone(){
+    return telefone;
+}
+
+inline void Participante::setSenha(const Senha &valor){
+    senha = valor; 
+}
+
+inline Senha Participante::getSenha(){
+    return senha;
+}
+
+inline void Participante::setCargo(const Cargo &valor){
+    cargo = valor; 
+}
+
+inline Cargo Participante::getCargo(){
+    return cargo;
+}
 
 class Peca {
     private:
@@ -61,6 +113,37 @@ class Peca {
         Classificacao getClassificacao();
 };
 
+inline void Peca::setIdentificador(const Codigo &valor){
+    identificador = valor; 
+}
+
+inline Codigo Peca::getIdentificador(){
+    return identificador;
+}
+
+inline void Peca::setNome(const Nome &valor){
+    nome = valor; 
+}
+
+inline Nome Peca::getNome(){
+    return nome;
+}
+
+inline void Peca::setTipo(const Tipo &valor){
+    tipo = valor; 
+}
+
+inline Tipo Peca::getTipo(){
+    return tipo;
+}
+
+inline void Peca::setClassificacao(const Classificacao &valor){
+    classificacao = valor; 
+}
+
+inline Classificacao Peca::getClassificacao(){
+    return classificacao;
+}
 
 class Sessao {
     private:
@@ -79,6 +162,29 @@ class Sessao {
         Horario getHorario();
 };
 
+inline void Sessao::setIdentificador(const Codigo &valor){
+    identificador = valor; 
+}
+
+inline Codigo Sessao::getIdentificador(){
+    return identificador;
+}
+
+inline void Sessao::setData(const Data &valor){
+    data = valor; 
+}
+
+inline Data Sessao::getData(){
+    return data;
+}
+
+inline void Sessao::setHorario(const Horario &valor){
+    horario = valor; 
+}
+
+inline Horario Sessao::getHorario(){
+    return horario;
+}
 
 class Sala {
     private:

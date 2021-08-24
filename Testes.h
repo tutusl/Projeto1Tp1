@@ -11,6 +11,7 @@ using namespace std;
 
 template<class T>
 class TUD {
+    //200023314
     private:
         const string VALOR_VALIDO;
         const string VALOR_INVALIDO;
@@ -82,12 +83,14 @@ int TUD<T>::run(){
 
 
 class TUCapacidade: public TUD<Capacidade> {
+    //200023314
     public:
         TUCapacidade();
 };
 
 
 class TUCargo: public TUD<Cargo> {
+    //200023314
     public:
         TUCargo();
 };
@@ -95,6 +98,7 @@ class TUCargo: public TUD<Cargo> {
 
 
 class TUClassificacao: public TUD<Classificacao> {
+    //200023314
     public:
         TUClassificacao();
 };
@@ -102,6 +106,7 @@ class TUClassificacao: public TUD<Classificacao> {
 
 
 class TUCodigo: public TUD<Codigo> {
+    //200023314
     public:
         TUCodigo();
 
@@ -110,6 +115,7 @@ class TUCodigo: public TUD<Codigo> {
 
 
 class TUData: public TUD<Data> {
+    //200023314
     public:
         TUData();
 
@@ -117,6 +123,7 @@ class TUData: public TUD<Data> {
 
 
 class TUEmail: public TUD<Email> {
+    //200023314
     public:
         TUEmail();
 
@@ -124,6 +131,7 @@ class TUEmail: public TUD<Email> {
 
 
 class TUHorario: public TUD<Horario> {
+    //200023314
     public:
         TUHorario();
 
@@ -131,6 +139,7 @@ class TUHorario: public TUD<Horario> {
 
 
 class TUMatricula: public TUD<Matricula> {
+    //200023314
     public:
         TUMatricula();
 
@@ -138,6 +147,7 @@ class TUMatricula: public TUD<Matricula> {
 
 
 class TUNome: public TUD<Nome> {
+    //200023314
     public:
         TUNome();
 
@@ -145,12 +155,14 @@ class TUNome: public TUD<Nome> {
 
 
 class TUSenha: public TUD<Senha> {
+    //200023314
     public:
         TUSenha();
 
 };
 
 class TUTelefone: public TUD<Telefone> {
+    //200023314
     public:
         TUTelefone();
 
@@ -158,6 +170,7 @@ class TUTelefone: public TUD<Telefone> {
 
 
 class TUTipo: public TUD<Tipo> {
+    //200023314
     public:
         TUTipo();
 
@@ -167,6 +180,7 @@ class TUTipo: public TUD<Tipo> {
 
 template<class T>
 class TUE {
+    //200023314
     private:
         void setUp();
         void tearDown();
@@ -210,6 +224,7 @@ int TUE<T>::run(){
 
 
 class TUParticipante: public TUE<Participante> {
+    //200023314
     private:
         static const string VALORES_VALIDOS[];
         void testarCenarioSucesso() override;
@@ -217,6 +232,7 @@ class TUParticipante: public TUE<Participante> {
 
 
 class TUPeca: public TUE<Peca> {
+    //200023314
     private:
         static const string VALORES_VALIDOS[];
         void testarCenarioSucesso() override;
@@ -224,6 +240,7 @@ class TUPeca: public TUE<Peca> {
 
 
 class TUSessao: public TUE<Sessao> {
+    //200023314
     private:
         static const string VALORES_VALIDOS[];
         void testarCenarioSucesso() override;
@@ -231,6 +248,7 @@ class TUSessao: public TUE<Sessao> {
 
 
 class TUSala: public TUE<Sala> {
+    //200023314
     private:
         static const string VALORES_VALIDOS[];
         void testarCenarioSucesso() override;

@@ -3,7 +3,12 @@
 #ifndef ENTIDADES_H
 #define ENTIDADES_H
 
+/// 
+/// Classe para entidade participante
+///
+
 class Participante {
+    //180030353
     private:
         Matricula matricula;
         Nome nome;
@@ -14,25 +19,77 @@ class Participante {
         Cargo cargo;
 
     public:
+
+///
+/// Armazena matrícula.
+/// @param valor Objeto de classe Matrícula
+///
         void setMatricula(const Matricula &valor);
+///
+/// Retorna matrícula.
+/// @return valor
+///
+///
         Matricula getMatricula();
-
+///
+/// Armazena nome.
+/// @param valor Objeto de classe Nome
+///
         void setNome(const Nome &valor);
+///
+/// Retorna Nome.
+/// @return valor
+///
         Nome getNome();
-
+///
+/// Armazena sobrenome.
+/// @param valor Objeto de classe Nome
+///
         void setSobrenome(const Nome &valor);
+///
+/// Retorna sobrenome.
+/// @return valor
+///
         Nome getSobrenome();
-
+///
+/// Armazena email.
+/// @param valor Objeto de classe Email
+///
         void setEmail(const Email &valor);
+///
+/// Retorna email.
+/// @return valor
+///
         Email getEmail();
-
+///
+/// Armazena telefone.
+/// @param valor Objeto de classe Telefone
+///
         void setTelefone(const Telefone &valor);
+///
+/// Retorna telefone.
+/// @return valor
+///
         Telefone getTelefone();
-
+///
+/// Armazena senha.
+/// @param valor Objeto de classe Senha
+///
         void setSenha(const Senha &valor);
+///
+/// Retorna senha.
+/// @return valor
+///
         Senha getSenha();
-
+///
+/// Armazena cargo.
+/// @param valor Objeto de classe Cargo
+///
         void setCargo(const Cargo &valor);
+///
+/// Retorna cargo.
+/// @return valor
+///
         Cargo getCargo();
 };
 
@@ -92,7 +149,12 @@ inline Cargo Participante::getCargo(){
     return cargo;
 }
 
+/// 
+/// Classe para entidade Peça
+///
+
 class Peca {
+    //190046546
     private:
         Codigo identificador;
         Nome nome;
@@ -100,16 +162,45 @@ class Peca {
         Classificacao classificacao;
 
     public:
+///
+/// Armazena identificador.
+/// @param valor Objeto da classe Código.
+///
         void setIdentificador(const Codigo &valor);
+///
+/// Retorna identificador.
+/// @return valor
+///
         Codigo getIdentificador();
-
+///
+/// Armazena nome.
+/// @param valor Objeto da classe Nome.
+///
         void setNome(const Nome &valor);
+///
+/// Retorna nome.
+/// @return valor
+///
         Nome getNome();
-
+///
+/// Armazena tipo.
+/// @param valor Objeto da classe Tipo.
+///
         void setTipo(const Tipo &valor);
+///
+/// Retorna tipo.
+/// @return valor
+///
         Tipo getTipo();
-
+///
+/// Armazena classificação.
+/// @param valor Objeto da classe Classificação.
+///
         void setClassificacao(const Classificacao &valor);
+///
+/// Retorna classificação.
+/// @return valor
+///
         Classificacao getClassificacao();
 };
 
@@ -145,20 +236,47 @@ inline Classificacao Peca::getClassificacao(){
     return classificacao;
 }
 
+/// 
+/// Classe para entidade Sessão
+///
+
 class Sessao {
+    //180030353
     private:
         Codigo identificador;
         Data data;
         Horario horario;
 
     public:
+///
+/// Armazena identificador.
+/// @param valor Objeto da classe Código.
+///
         void setIdentificador(const Codigo &valor);
+///
+/// Retorna identificador.
+/// @return valor
+///
         Codigo getIdentificador();
-
+///
+/// Armazena data.
+/// @param valor Objeto da classe Data.
+///
         void setData(const Data &valor);
+///
+/// Retorna data.
+/// @return valor
+///
         Data getData();
-
+///
+/// Armazena horário.
+/// @param valor Objeto da classe Horário.
+///
         void setHorario(const Horario &valor);
+///
+/// Retorna horário.
+/// @return valor
+///
         Horario getHorario();
 };
 
@@ -185,21 +303,46 @@ inline void Sessao::setHorario(const Horario &valor){
 inline Horario Sessao::getHorario(){
     return horario;
 }
-
+/// 
+/// Classe para entidade Sala
+///
 class Sala {
+    //180030353
     private:
         Codigo identificador;
         Nome nome;
         Capacidade capacidade;
 
     public:
+///
+/// Armazena identificador.
+/// @param valor Objeto da classe Código.
+///
         void setIdentificador(const Codigo &valor);
+///
+/// Retorna identificador.
+/// @return valor
+///
         Codigo getIdentificador();
-
+///
+/// Armazena nome.
+/// @param valor Objeto da classe Nome.
+///
         void setNome(const Nome &valor);
+///
+/// Retorna nome.
+/// @return valor
+///
         Nome getNome();
-
+///
+/// Armazena capacidade.
+/// @param valor Objeto da classe Capcidade.
+///
         void setCapacidade(const Capacidade &valor);
+///
+/// Retorna capacidade.
+/// @return valor
+///
         Capacidade getCapacidade();
 };
 

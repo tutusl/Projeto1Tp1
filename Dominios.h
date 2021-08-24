@@ -14,7 +14,7 @@ using namespace std;
 ///
 
 class Dominio {
-    //Luiz
+    //200023314
     private:
         string valor;
         virtual void validar(string valor) = 0;
@@ -58,7 +58,7 @@ inline string Dominio::getValor(){
 ///
 
 class Capacidade: public Dominio {
-    //Luiz
+    //200023314
     private:
         static const regex FORMATO;
 //        static constexpr int ACEITOS[5] = {100, 200, 300, 400, 500};
@@ -73,7 +73,7 @@ class Capacidade: public Dominio {
 ///
 
 class Cargo: public Dominio {
-    //Henrique
+    //190046546
     private:
         void validar(string valor);
 };
@@ -85,7 +85,7 @@ class Cargo: public Dominio {
 ///
 
 class Classificacao: public Dominio {
-    //Henrique
+    //190046546
     private:
         void validar(string valor) override;
 };
@@ -99,7 +99,7 @@ class Classificacao: public Dominio {
 ///
 
 class Codigo: public Dominio {
-    //Luiz
+    //200023314
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -116,7 +116,7 @@ class Codigo: public Dominio {
 ///
 
 class Data: public Dominio {
-    //Luiz
+    //200023314
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -134,7 +134,7 @@ class Data: public Dominio {
 ///
 
 class Email: public Dominio {
-    //Henrique
+    //190046546
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -149,7 +149,7 @@ class Email: public Dominio {
 ///
 
 class Horario: public Dominio {
-    //Luiz
+    //200023314
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -164,7 +164,7 @@ class Horario: public Dominio {
 ///
 
 class Matricula: public Dominio {
-    // Henrique
+    // 190046546
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -181,7 +181,7 @@ class Matricula: public Dominio {
 ///
 
 class Nome: public Dominio {
-    // Arthur
+    //180030353
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -197,7 +197,7 @@ class Nome: public Dominio {
 ///
 
 class Senha: public Dominio {
-    // Arthur
+    //180030353
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -215,7 +215,7 @@ class Senha: public Dominio {
 ///
 
 class Telefone: public Dominio {
-    // Arthur
+    //180030353
     private:
         static const regex FORMATO;
         void validar(string valor) override;
@@ -225,10 +225,9 @@ class Telefone: public Dominio {
 /// Classe para representar Tipo.
 /// Regras de formato:
 /// - Tipo é válido se for igual a auto, comédia, drama, farsa, melodrama, monólogo, musical, ópera, revista.
-///
 
 class Tipo: public Dominio {
-    // Arthur
+    //180030353
     private:
         void validar(string valor) override;
 };

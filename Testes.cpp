@@ -1,6 +1,5 @@
 #include "Testes.h"
-
-
+#include <iostream>
 
 
 TUCapacidade::TUCapacidade()
@@ -94,8 +93,8 @@ void TUParticipante::testarCenarioSucesso(){
 
     Nome sobrenome;
     sobrenome.setValor((VALORES_VALIDOS[2]));
-    unidade->setNome(nome);
-    if (unidade->getNome().getValor() != VALORES_VALIDOS[2])
+    unidade->setSobrenome(sobrenome);
+    if (unidade->getSobrenome().getValor() != VALORES_VALIDOS[2])
         estado = FALHA;
 
     Email email;
@@ -119,7 +118,7 @@ void TUParticipante::testarCenarioSucesso(){
     Cargo cargo;
     cargo.setValor((VALORES_VALIDOS[6]));
     unidade->setCargo(cargo);
-    if (unidade->getNome().getValor() != VALORES_VALIDOS[6])
+    if (unidade->getCargo().getValor() != VALORES_VALIDOS[6])
         estado = FALHA;
 }
 
@@ -141,11 +140,11 @@ void TUPeca::testarCenarioSucesso(){
     unidade->setTipo(tipo);
     if (unidade->getTipo().getValor() != VALORES_VALIDOS[2])
         estado = FALHA;
-
+    
     Classificacao classificacao;
     classificacao.setValor((VALORES_VALIDOS[3]));
-    if (unidade->getClassificacao().getValor() != VALORES_VALIDOS[3])
     unidade->setClassificacao(classificacao);
+    if (unidade->getClassificacao().getValor() != VALORES_VALIDOS[3])
         estado = FALHA;
 }
 

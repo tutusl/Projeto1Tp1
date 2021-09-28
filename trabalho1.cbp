@@ -37,6 +37,7 @@
 		<Unit filename="Entidades.h" />
 		<Unit filename="Testes.cpp" />
 		<Unit filename="Testes.h" />
+		<Unit filename="interfaces.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<DoxyBlocks>

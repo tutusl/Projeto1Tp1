@@ -3,7 +3,9 @@
 
 class IServicoAutenticacao;
 class IServicoParticipante;
-class IServicoPSS;
+class IServicoPeca;
+class IServicoSala;
+class IServicoSessao;
 
 
 class IApresentacaoAutenticacao {
@@ -27,6 +29,12 @@ class IApresentacaoParticipante {
 
 class IApresentacaoPSS {
     public:
+        virtual void executar(Matricula*) = 0;
+        virtual void executar() = 0;
+        virtual void setCntrServicoPeca(IServicoPeca*) = 0;
+        virtual void setCntrServicoSessao(IServicoSessao*) = 0;
+        virtual void setCntrServicoSala(IServicoSala*) = 0;
+        virtual ~IApresentacaoPSS(){};
 
 };
 
@@ -47,6 +55,30 @@ class IServicoParticipante {
 };
 
 
-class IServicoPSS {
+class IServicoPeca{
+    public:
+        virtual bool incluir(Peca*) = 0;
+        virtual bool excluir(Codigo*) = 0;
+        virtual bool editar(Peca*) = 0;
+        virtual bool listar(Peca*) = 0;
+
+};
+
+
+class IServicoSessao{
+    public:
+        virtual bool incluir(Sessao*) = 0;
+        virtual bool excluir(Codigo*) = 0;
+        virtual bool editar(Sessao*) = 0;
+        virtual bool listar(Sessão*) = 0;
+
+};
+
+class IServicoSala{
+    public:
+        virtual bool incluir(Sala*) = 0;
+        virtual bool excluir(Codigo*) = 0;
+        virtual bool editar(Sala*) = 0;
+        virtual bool listar(Sala*) = 0;
 
 };

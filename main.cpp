@@ -1,8 +1,10 @@
 #include <stdexcept>
 #include <iostream>
 #include <regex>
+#include "ControlesApresentacao.h"
 #include "Dominios.h"
 #include "Entidades.h"
+#include "Interfaces.h"
 #include "Testes.h"
 
 using namespace std;

@@ -1,6 +1,10 @@
 #include "Dominios.h"
 #include "Entidades.h"
 
+#ifndef INTERFACES_H
+#define INTERFACES_H
+
+
 class IServicoAutenticacao;
 class IServicoParticipante;
 class IServicoPeca;
@@ -70,7 +74,7 @@ class IServicoSessao{
         virtual bool incluir(Sessao*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Sessao*) = 0;
-        virtual bool listar(Sessão*) = 0;
+        virtual bool listar(Sessao*) = 0;
 
 };
 
@@ -82,3 +86,5 @@ class IServicoSala{
         virtual bool listar(Sala*) = 0;
 
 };
+
+#endif // INTERFACES_H

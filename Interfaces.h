@@ -54,8 +54,9 @@ class IServicoAutenticacao {
 class IServicoParticipante {
     public:
         virtual bool descadastrar(Matricula*) = 0;
-        virtual bool alterar(Participante*) = 0;
-        virtual bool visualizar(Participante*) = 0;
+        virtual bool alterar(Matricula*) = 0;
+        virtual void visualizar(Matricula*) = 0;
+        virtual bool cadastrar(Participante*) = 0;
 };
 
 
@@ -64,7 +65,8 @@ class IServicoPeca{
         virtual bool incluir(Peca*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Peca*) = 0;
-        virtual bool listar(Peca*) = 0;
+        virtual void visualizar(Codigo*) = 0;
+        virtual void listar() = 0;
 
 };
 
@@ -74,7 +76,8 @@ class IServicoSessao{
         virtual bool incluir(Sessao*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Sessao*) = 0;
-        virtual bool listar(Sessao*) = 0;
+        virtual void visualizar(Codigo*) = 0;
+        virtual void listar() = 0;
 
 };
 
@@ -83,7 +86,8 @@ class IServicoSala{
         virtual bool incluir(Sala*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Sala*) = 0;
-        virtual bool listar(Sala*) = 0;
+        virtual void visualizar(Codigo*) = 0;
+        virtual void listar() = 0;
 
 };
 

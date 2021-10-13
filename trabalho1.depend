@@ -111,3 +111,51 @@
 	"Dominios.h"
 	"Entidades.h"
 
+1633032050 source:c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\dominios.cpp
+	<stdexcept>
+	"Dominios.h"
+
+1633032050 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\dominios.h
+	<string>
+	<regex>
+
+1633032050 source:c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\entidades.cpp
+	"Entidades.h"
+
+1633032050 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\entidades.h
+	"Dominios.h"
+
+1633032050 source:c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\testes.cpp
+	"Testes.h"
+	<iostream>
+
+1633032050 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\testes.h
+	<string>
+	"Dominios.h"
+	"Entidades.h"
+
+1634063136 source:c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\main.cpp
+	<stdexcept>
+	<iostream>
+	<regex>
+	"ControlesApresentacao.h"
+	"ControlesServico.h"
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+	"Testes.h"
+
+1634063129 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\controlesapresentacao.h
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+
+1633032050 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\interfaces.h
+	"Dominios.h"
+	"Entidades.h"
+
+1633032050 c:\users\cliente\documents\unb\tp1\trabalho2\projeto1tp1-master\controlesservico.h
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+

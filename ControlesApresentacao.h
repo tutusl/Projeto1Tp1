@@ -5,10 +5,32 @@
 #include "Entidades.h"
 #include "Interfaces.h"
 
+#ifdef _WIN32   // OS Windows
+#define CLR system("CLS")
+#elif __linux__  // OS Linux
+#define CLR system("clear")
+#endif 
+
+class CntrApresentacaoControle {
+    private:
+        Matricula matricula;
+        IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
+        IApresentacaoParticipante *cntrApresentacaoParticipante;
+        IApresentacaoPSS *cntrApresentacaoPSS;
+
+    public:
+        void executar();
+        void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao *cntr) {cntrApresentacaoAutenticacao = cntr;};
+        void setCntrApresentacaoParticipante(IApresentacaoParticipante *cntr) {cntrApresentacaoParticipante = cntr;};
+        void setCntrApresentacaoPSS(IApresentacaoPSS *cntr) {cntrApresentacaoPSS = cntr;};
+};
+
+
+
 class CntrApresentacaoAutenticacao: public IApresentacaoAutenticacao {
     private:
         IServicoAutenticacao *cntr;
-
+        
     public:
         bool autenticar(Matricula *matricula) override;
         void setCntrServicoAutenticacao(IServicoAutenticacao *cntr) override {this->cntr = cntr;};
@@ -29,6 +51,20 @@ class CntrApresentacaoParticipante: public IApresentacaoParticipante {
 
 class CntrApresentacaoPSS: public IApresentacaoPSS {
     private:
+        void editar();
+        bool editarPeca();
+        bool editarSessao();
+        bool editarSala();
+
+        void incluir();
+        bool incluirPeca();
+        bool incluirSessao();
+        bool incluirSala();
+        
+        void excluir();
+
+        void visualizar();
+
         IServicoPeca *cntrPeca;
         IServicoSessao *cntrSessao;
         IServicoSala *cntrSala;

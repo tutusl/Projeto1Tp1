@@ -6,6 +6,7 @@
 #include "Interfaces.h"
 
 
+
 class CntrServicoAutenticacao: public IServicoAutenticacao {
     public:
         bool autenticar(Matricula* matricula, Senha* senha) override;
@@ -16,8 +17,9 @@ class CntrServicoAutenticacao: public IServicoAutenticacao {
 class CntrServicoParticipante: public IServicoParticipante {
     public:
         bool descadastrar(Matricula *matricula) override;
-        bool alterar(Participante *participante) override;
-        bool visualizar(Participante *participante) override;
+        bool alterar(Matricula *matricula) override;
+        void visualizar(Matricula *matricula) override;
+        bool cadastrar(Participante* participante) override;
 };
 
 
@@ -26,7 +28,8 @@ class CntrServicoPeca: public IServicoPeca {
         bool incluir(Peca *peca) override;
         bool excluir(Codigo *codigo) override;
         bool editar(Peca *peca) override;
-        bool listar(Peca *peca) override;
+        void visualizar(Codigo *codigo) override;
+        void listar() override;
 };
 
 
@@ -35,7 +38,8 @@ class CntrServicoSessao: public IServicoSessao {
         bool incluir(Sessao *sessao) override;
         bool excluir(Codigo *codigo) override;
         bool editar(Sessao *sessao) override;
-        bool listar(Sessao *sessao) override;
+        void visualizar(Codigo *codigo) override;
+        void listar() override;
 };
 
 
@@ -44,7 +48,8 @@ class CntrServicoSala: public IServicoSala {
         bool incluir(Sala *sala) override;
         bool excluir(Codigo *codigo) override;
         bool editar(Sala *sala) override;
-        bool listar(Sala *sala) override;
+        void visualizar(Codigo *codigo) override;
+        void listar() override;
 };
 
 #endif // CONTROLES_SERVICO_H

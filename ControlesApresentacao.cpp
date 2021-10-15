@@ -570,14 +570,16 @@ void CntrApresentacaoPSS::editar(){
 
 bool CntrApresentacaoPSS::incluirPeca(){
     string texto1 = "Preencha os seguintes campos: ";
+    string texto6 = "Codigo       : ";
     string texto2 = "Nome         : ";
     string texto3 = "Tipo         : ";
     string texto4 = "Classificacao: ";
     string texto5 = "Dados em formato incorreto. Digite algo.";
 
-    string dado1, dado2, dado3;
+    string dado1, dado2, dado3, dado4;
 
     Peca peca;
+    Codigo codigo;
     Nome nome;
     Tipo tipo;
     Classificacao classificacao;
@@ -585,6 +587,8 @@ bool CntrApresentacaoPSS::incluirPeca(){
     CLR;
 
     cout << texto1 << endl;
+    cout << texto6;
+    cin >> dado4;
     cout << texto2;
     cin >> dado1;
     cout << texto3;
@@ -593,6 +597,7 @@ bool CntrApresentacaoPSS::incluirPeca(){
     cin >> dado3;
 
     try{
+        codigo.setValor(dado4);
         nome.setValor(dado1);
         tipo.setValor(dado2);
         classificacao.setValor(dado3);
@@ -604,6 +609,7 @@ bool CntrApresentacaoPSS::incluirPeca(){
         return false;
     }
 
+    peca.setIdentificador(codigo);
     peca.setNome(nome);
     peca.setTipo(tipo);
     peca.setClassificacao(classificacao);
@@ -613,21 +619,25 @@ bool CntrApresentacaoPSS::incluirPeca(){
 
 bool CntrApresentacaoPSS::incluirSessao(){
     string texto1 = "Preencha os seguintes campos: ";
+    string texto7 = "Codigo       : ";
     string texto2 = "Data         : ";
     string texto3 = "Hora         : ";
     string texto4 = "Dados em formato incorreto. Digite algo.";
     string texto5 = "Codigo da peca associada: ";
     string texto6 = "Codigo da sala associada: ";
 
-    string dado1, dado2, peca, sala;
+    string dado1, dado2, dado3, peca, sala;
 
     Sessao sessao;
+    Codigo codigo;
     Data data;
     Horario hora;
 
     CLR;
 
     cout << texto1 << endl;
+    cout << texto7;
+    cin >> dado3;
     cout << texto2;
     cin >> dado1;
     cout << texto3;
@@ -639,6 +649,7 @@ bool CntrApresentacaoPSS::incluirSessao(){
 
 
     try{
+        codigo.setValor(dado3);
         data.setValor(dado1);
         hora.setValor(dado2);
     }
@@ -649,6 +660,7 @@ bool CntrApresentacaoPSS::incluirSessao(){
         return false;
     }
 
+    sessao.setIdentificador(codigo);
     sessao.setData(data);
     sessao.setHorario(hora);
 
@@ -658,26 +670,31 @@ bool CntrApresentacaoPSS::incluirSessao(){
 
 bool CntrApresentacaoPSS::incluirSala(){
     string texto1 = "Preencha os seguintes campos: ";
+    string texto5 = "Codigo       : ";
     string texto2 = "Nome         : ";
     string texto3 = "Capacidade   : ";
     string texto4 = "Dados em formato incorreto. Digite algo.";
 
-    string dado1, dado2;
+    string dado1, dado2, dado3;
 
     Sala sala;
+    Codigo codigo;
     Nome nome;
     Capacidade capacidade;
 
     CLR;
 
     cout << texto1 << endl;
-    cout << texto2 << " ";
+    cout << texto5;
+    cin >> dado3;
+    cout << texto2;
     cin >> dado1;
-    cout << texto3 << " ";
+    cout << texto3;
     cin >> dado2;
 
 
     try{
+        codigo.setValor(dado3);
         nome.setValor(dado1);
         capacidade.setValor(dado2);
     }
@@ -688,6 +705,7 @@ bool CntrApresentacaoPSS::incluirSala(){
         return false;
     }
 
+    sala.setIdentificador(codigo);
     sala.setNome(nome);
     sala.setCapacidade(capacidade);
 

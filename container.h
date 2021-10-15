@@ -13,7 +13,7 @@ using namespace std;
 
 class ContainerParticipante {
     public:
-        typedef unordered_map<string, Participante*> cmap;
+        typedef unordered_map<string, Participante> cmap;
         static ContainerParticipante* getInstancia();
         bool incluir(Participante* participante);
         bool remover(string key);
@@ -31,12 +31,13 @@ class ContainerParticipante {
 
 class ContainerPeca {
     public:
-        typedef unordered_map<string, Peca*> cmap;
+        typedef unordered_map<string, Peca> cmap;
         static ContainerPeca* getInstancia();
         bool incluir(Peca* peca);
         bool remover(string key);
         Peca* pesquisar(string key);
         bool atualizar(Peca* peca);
+        int contar(string key);
         cmap getMap(){return container;};
 
     private:
@@ -49,7 +50,7 @@ class ContainerPeca {
 
 class ContainerSessao {
     public:
-        typedef unordered_map<string, Sessao*> cmap;
+        typedef unordered_map<string, Sessao> cmap;
         static ContainerSessao* getInstancia();
         bool incluir(Sessao* sessao, string peca, string sala);
         bool remover(string key);
@@ -67,7 +68,7 @@ class ContainerSessao {
 
 class ContainerSala {
     public:
-        typedef unordered_map<string, Sala*> cmap;
+        typedef unordered_map<string, Sala> cmap;
         static ContainerSala* getInstancia();
         bool incluir(Sala* sala);
         bool remover(string key);

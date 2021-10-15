@@ -172,7 +172,8 @@ bool CntrServicoSala::editar(Sala *sala){
 string CntrServicoSala::visualizar(Codigo *codigo){
     ContainerSala* cs = ContainerSala::getInstancia();
     Sala* sala = cs->pesquisar(codigo->getValor());
-
+    if(sala == nullptr)
+        return "Sala nao encontrada.";
     string saida = "Identificador: ";
     saida += sala->getIdentificador().getValor();
     saida += "\nNome: ";

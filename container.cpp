@@ -56,7 +56,7 @@ bool ContainerParticipante::incluir(Participante* participante){
     bool valor = true;
     string key = participante->getMatricula().getValor();
     if(container.count(key) < 1)
-        container[key] = participante;
+        container[key] = *participante;
     else
         valor = false;
     return valor;
@@ -76,14 +76,14 @@ bool ContainerParticipante::remover(string key){
 Participante* ContainerParticipante::pesquisar(string key){
     Participante* ptr = nullptr;
     if(container.count(key) == 1)
-        ptr = container[key];
+        ptr = &container[key];
     return ptr;
 }
 
 
 bool ContainerParticipante::atualizar(Participante* participante){
     string key = participante->getMatricula().getValor();
-    container[key] = participante;
+    container[key] = *participante;
     return true;
 }
 
@@ -94,7 +94,7 @@ bool ContainerPeca::incluir(Peca* peca){
     bool valor = true;
     string key = peca->getIdentificador().getValor();
     if(container.count(key) < 1)
-        container[key] = peca;
+        container[key] = *peca;
     else
         valor = false;
     return valor;
@@ -116,19 +116,21 @@ bool ContainerPeca::remover(string key){
 Peca* ContainerPeca::pesquisar(string key){
     Peca* ptr = nullptr;
     if(container.count(key) == 1)
-        ptr = container[key];
+        ptr = &container[key];
     return ptr;
 }
 
 
 bool ContainerPeca::atualizar(Peca* peca){
     string key = peca->getIdentificador().getValor();
-    container[key] = peca;
+    container[key] = *peca;
     return true;
 }
 
 
-
+int ContainerPeca::contar(string key){
+    return container.count(key);
+}
 
 
 
@@ -143,7 +145,7 @@ bool ContainerSessao::incluir(Sessao* sessao, string peca, string sala){
 
     bool valor;
     if(container.count(key) < 1)
-        container[key] = sessao;
+        container[key] = *sessao;
     else
         valor = false;
     return valor;
@@ -163,14 +165,14 @@ bool ContainerSessao::remover(string key){
 Sessao* ContainerSessao::pesquisar(string key){
     Sessao* ptr = nullptr;
     if(container.count(key) == 1)
-        ptr = container[key];
+        ptr = &container[key];
     return ptr;
 }
 
 
 bool ContainerSessao::atualizar(Sessao* sessao){
     string key = sessao->getIdentificador().getValor();
-    container[key] = sessao;
+    container[key] = *sessao;
     return true;
 }
 
@@ -185,7 +187,7 @@ bool ContainerSala::incluir(Sala* sala){
     bool valor = true;
     string key = sala->getIdentificador().getValor();
     if(container.count(key) < 1)
-        container[key] = sala;
+        container[key] = *sala;
     else
         valor = false;
     return valor;
@@ -203,14 +205,14 @@ bool ContainerSala::remover(string key){
 Sala* ContainerSala::pesquisar(string key){
     Sala* ptr = nullptr;
     if(container.count(key) == 1)
-        ptr = container[key];
+        ptr = &container[key];
     return ptr;
 }
 
 
 bool ContainerSala::atualizar(Sala* sala){
     string key = sala->getIdentificador().getValor();
-    container[key] = sala;
+    container[key] = *sala;
     return true;
 }
 
@@ -220,6 +222,9 @@ bool ContainerSala::atualizar(Sala* sala){
 
 bool Peca2Participante::incluir(string peca, string participante){
     bool valor = true;
+    ContainerPeca *cp = ContainerPeca::getInstancia();
+    if(cp->contar(peca) == 0)
+        return false;
     if(container.count(peca) <= 10)
         container.insert({{peca, participante}});
     else
@@ -252,6 +257,9 @@ int Peca2Participante::contar(string peca){
 
 bool Peca2Sessao::incluir(string peca, string sessao){
     bool valor = true;
+    ContainerPeca *cp = ContainerPeca::getInstancia();
+    if(cp->contar(peca) == 0)
+        return false;
     if(container.count(peca) <= 5)
         container.insert({{peca, sessao}});
     else

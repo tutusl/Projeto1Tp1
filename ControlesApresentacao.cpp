@@ -66,7 +66,6 @@ void CntrApresentacaoControle::executar(){
                     CLR;
                     cout << texto10 << endl;
                     cin.ignore();
-                    cin.ignore();
                 }
                 break;
             case 2:
@@ -360,12 +359,15 @@ void CntrApresentacaoPSS::executar(){
         switch(op){
             case 1:
                 cout << cntrPeca->listar() << endl;
+                cin.ignore();
                 break;
             case 2:
                 cout << cntrSessao->listar() << endl;
+                cin.ignore();
                 break;
             case 3:
                 cout << cntrSala->listar() << endl;
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -547,18 +549,21 @@ void CntrApresentacaoPSS::editar(){
                     cout << texto6 << endl;
                 else
                     cout << texto9 << endl;
+                cin.ignore();
                 break;
             case 2:
                 if(editarSessao())
                     cout << texto7 << endl;
                 else
                     cout << texto10 << endl;
+                cin.ignore();
                 break;
             case 3:
                 if(editarSala())
                     cout << texto8 << endl;
                 else
                     cout << texto11 << endl;
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -745,18 +750,21 @@ void CntrApresentacaoPSS::incluir(){
                     cout << texto6 << endl;
                 else
                     cout << texto9 << endl;
+                cin.ignore();
                 break;
             case 2:
                 if(incluirSessao())
                     cout << texto7 << endl;
                 else
                     cout << texto10 << endl;
+                cin.ignore();
                 break;
             case 3:
                 if(incluirSala())
                     cout << texto8 << endl;
                 else
                     cout << texto11 << endl;
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -806,6 +814,7 @@ void CntrApresentacaoPSS::excluir(){
                     cout << texto9 << endl;
                 else
                     cout << texto12 << endl;
+                cin.ignore();
                 break;
             case 2:
                 cout << texto7 << endl;
@@ -815,6 +824,7 @@ void CntrApresentacaoPSS::excluir(){
                     cout << texto10 << endl;
                 else
                     cout << texto13 << endl;
+                cin.ignore();
                 break;
             case 3:
                 cout << texto8 << endl;
@@ -824,6 +834,7 @@ void CntrApresentacaoPSS::excluir(){
                     cout << texto11 << endl;
                 else
                     cout << texto14 << endl;
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -862,18 +873,24 @@ void CntrApresentacaoPSS::visualizar(){
                 cin >> cod;
                 codigo.setValor(cod);
                 cout << cntrPeca->visualizar(&codigo) << endl;
+                cin.ignore();
+                cin.ignore();
                 break;
             case 2:
                 cout << texto7 << endl;
                 cin >> cod;
                 codigo.setValor(cod);
                 cout << cntrSessao->visualizar(&codigo) << endl;
+                cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 cout << texto8 << endl;
                 cin >> cod;
                 codigo.setValor(cod);
                 cout << cntrSala->visualizar(&codigo) << endl;
+                cin.ignore();
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -909,18 +926,23 @@ void CntrApresentacaoPSS::executar(Matricula *matricula){
         switch(op){
             case 1:
                 incluir();
+                cin.ignore();
                 break;
             case 2:
                 excluir();
+                cin.ignore();
                 break;
             case 3:
                 editar();
+                cin.ignore();
                 break;
             case 4:
                 visualizar();
+                cin.ignore();
                 break;
             case 5:
                 executar();
+                cin.ignore();
                 break;
             case 6:
                 apresentar = false;

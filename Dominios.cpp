@@ -122,11 +122,11 @@ void Matricula::validar(string valor){
 void Nome::validar(string valor)
 {
     if (valor.size() < 5)
-        throw length_error("Nome invalido (nome muito pequeno)");
+        throw invalid_argument("Nome invalido (nome muito pequeno)");
     if (valor.size() > 20)
-        throw length_error("Nome invalido (nome muito grande)");
+        throw invalid_argument("Nome invalido (nome muito grande)");
     if (!regex_match(valor, FORMATO))
-            throw invalid_argument("Nome invalido (formato nao suportado)");
+        throw invalid_argument("Nome invalido (formato nao suportado)");
 }
 
 void Senha::validar(string valor)

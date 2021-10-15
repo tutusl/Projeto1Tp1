@@ -1,99 +1,195 @@
+#include <unordered_map>
 #include "ControlesServico.h"
+#include "container.h"
 
 using namespace std;
 
 bool CntrServicoAutenticacao::autenticar(Matricula* matricula, Senha* senha){
-    
+    ContainerParticipante* cp = ContainerParticipante::getInstancia();
+    Participante *participante = cp->pesquisar(matricula->getValor());
 
-    return 0;
+    if (participante == nullptr){
+        return false;
+    }
+    else{
+        if (participante->getSenha().getValor() == senha->getValor()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 bool CntrServicoParticipante::descadastrar(Matricula *matricula){
-    
-  
-    return 0;
+    ContainerParticipante* cp = ContainerParticipante::getInstancia();
+
+    return cp->remover(matricula->getValor());
 }
 
-bool CntrServicoParticipante::alterar(Matricula *matricula){
+bool CntrServicoParticipante::alterar(Participante *participante){
+    ContainerParticipante* cp = ContainerParticipante::getInstancia();
 
-  
-    return 0;
+    if (cp->atualizar(participante)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-void CntrServicoParticipante::visualizar(Matricula *matricula){
-
-
-    return;
+bool CntrServicoParticipante::cadastrar(Participante *participante){
+    ContainerParticipante* cp = ContainerParticipante::getInstancia();
+    return(cp->incluir(participante));
 }
+
+
+bool CntrServicoParticipante::cadastrarEmPeca(Matricula *matricula, string peca){
+    Peca2Participante *relacao = Peca2Participante::getInstancia();
+    return relacao->incluir(matricula->getValor(), peca);
+}
+
+
+///////////////////////////////////////////////////////
+/////////////   Peca    ///////////////////////////////
+
 
 bool CntrServicoPeca::incluir(Peca *peca){
-
-
-	return 0;
+    ContainerPeca* cp = ContainerPeca::getInstancia();
+	return cp -> incluir(peca);
 }
 
 bool CntrServicoPeca::excluir(Codigo *codigo){
+    ContainerPeca* cp = ContainerPeca::getInstancia();
 
-
-    return 0;
+	return cp->remover(codigo->getValor());
 }
 
 bool CntrServicoPeca::editar(Peca *peca){
-
-
-    return 0;
+    ContainerPeca* cp = ContainerPeca::getInstancia();
+    if (cp->pesquisar(peca->getIdentificador().getValor()) == nullptr){
+        return false;
+    }
+    return cp->atualizar(peca);
 }
 
-void CntrServicoPeca::visualizar(Codigo *codigo){
+string CntrServicoPeca::visualizar(Codigo *codigo){
+    ContainerPeca* cp = ContainerPeca::getInstancia();
+    Peca* peca = cp->pesquisar(codigo->getValor());
 
-
-    return;
+    string saida = "Identificador: ";
+    saida += peca->getIdentificador().getValor();
+    saida += "\nNome: ";
+    saida += peca->getNome().getValor();
+    saida += "\nTipo: ";
+    saida += peca->getTipo().getValor();
+    saida += "\nClassificacao: ";
+    saida += peca->getClassificacao().getValor();
+    return saida;
 }
 
-bool CntrServicoSessao::incluir(Sessao *sessao){
 
+string CntrServicoPeca::listar(){
+    ContainerPeca *cp = ContainerPeca::getInstancia();
+    ContainerPeca::cmap mp = cp->getMap();
+    string saida = "Codigos de pecas:";
+    for(ContainerPeca::cmap::iterator i=mp.begin();i!=mp.end();i++) {
+        saida += "\n";
+        saida += i->first;
+    }
+    return saida;
+}
 
-    return 0;
+///////////////////////////////////////////////////////
+/////////////   Sessao    /////////////////////////////
+
+bool CntrServicoSessao::incluir(Sessao *sessao, string peca, string sala){
+    ContainerSessao* cs = ContainerSessao::getInstancia();
+    return cs-> incluir(sessao, peca, sala);
 }
 
 bool CntrServicoSessao::excluir(Codigo *codigo){
-    
+    ContainerSessao* cs = ContainerSessao::getInstancia();
 
-    return 0;
+    return cs-> remover(codigo->getValor());
 }
 
 bool CntrServicoSessao::editar(Sessao *sessao){
-    
-
-    return 0;
+    ContainerSessao* cs = ContainerSessao::getInstancia();
+    if (cs->pesquisar(sessao->getIdentificador().getValor()) == nullptr){
+        return false;
+    }
+    return cs->atualizar(sessao);
 }
 
-void CntrServicoSessao::visualizar(Codigo *codigo){
-    
+string CntrServicoSessao::visualizar(Codigo *codigo){
+    ContainerSessao* cs = ContainerSessao::getInstancia();
+    Sessao* sessao = cs->pesquisar(codigo->getValor());
 
-    return;
+    string saida = "Identificador: ";
+    saida += sessao->getIdentificador().getValor();
+    saida += "\nData: ";
+    saida += sessao->getData().getValor();
+    saida += "\nHorario: ";
+    saida += sessao->getHorario().getValor();
+    return saida;
 }
+
+
+string CntrServicoSessao::listar(){
+    ContainerSessao *cp = ContainerSessao::getInstancia();
+    ContainerSessao::cmap mp = cp->getMap();
+    string saida = "Codigos de pecas:";
+    for(ContainerSessao::cmap::iterator i=mp.begin();i!=mp.end();i++) {
+        saida += "\n";
+        saida += i->first;
+    }
+    return saida;
+}
+
+///////////////////////////////////////////////////////
+/////////////   Sala    ///////////////////////////////
 
 bool CntrServicoSala::incluir(Sala *sala){
-
-
-    return 0;
+    ContainerSala* cs = ContainerSala::getInstancia();
+    return cs-> incluir(sala);
 }
 
 bool CntrServicoSala::excluir(Codigo *codigo){
-    
+    ContainerSala* cs = ContainerSala::getInstancia();
 
-    return 0;
+    return cs-> remover(codigo->getValor());
 }
 
 bool CntrServicoSala::editar(Sala *sala){
-    
-
-    return 0;
+    ContainerSala* cs = ContainerSala::getInstancia();
+    if (cs->pesquisar(sala->getIdentificador().getValor()) == nullptr){
+        return false;
+    }
+    return cs->atualizar(sala);
 }
 
-void CntrServicoSala::visualizar(Codigo *codigo){
-    
+string CntrServicoSala::visualizar(Codigo *codigo){
+    ContainerSala* cs = ContainerSala::getInstancia();
+    Sala* sala = cs->pesquisar(codigo->getValor());
 
-    return;
+    string saida = "Identificador: ";
+    saida += sala->getIdentificador().getValor();
+    saida += "\nNome: ";
+    saida += sala->getNome().getValor();
+    saida += "\nCapacidade: ";
+    saida += sala->getCapacidade().getValor();
+    return saida;
+}
+
+
+string CntrServicoSala::listar(){
+    ContainerSala *cp = ContainerSala::getInstancia();
+    ContainerSala::cmap mp = cp->getMap();
+    string saida = "Codigos de pecas:";
+    for(ContainerSala::cmap::iterator i=mp.begin();i!=mp.end();i++) {
+        saida += "\n";
+        saida += i->first;
+    }
+    return saida;
 }

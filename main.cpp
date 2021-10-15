@@ -1,69 +1,51 @@
 #include <stdexcept>
 #include <iostream>
 #include <regex>
-#include "ControlesApresentacao.h"
 #include "Dominios.h"
 #include "Entidades.h"
 #include "Interfaces.h"
-#include "Testes.h"
+#include "ControlesApresentacao.h"
+#include "ControlesServico.h"
 
 using namespace std;
 
-template<class T>
-void test(string unidade){
-    cout << unidade;
-    T *teste = new T();
-    switch(teste->run()){
-        case T::SUCESSO:
-            cout << " Sucesso" << endl;
-            break;
-        case T::FALHA:
-            cout << " Falha" << endl;
-            break;
-    }
-    delete teste;
-}
+
 
 int main()
 {
-    // Testes de unidade
+    CntrApresentacaoControle *CAC;
+    IApresentacaoAutenticacao *CAA;
+    IApresentacaoParticipante *CAP;
+    IApresentacaoPSS *CAPSS;
 
-    cout << "Dominios:" << endl;
+    IServicoAutenticacao *CSA;
+    IServicoParticipante *CSPA;
+    IServicoPeca *CSPE;
+    IServicoSessao *CSSE;
+    IServicoSala *CSSA;
 
-    test<TUCapacidade>("Capacidade");
+    CAC = new CntrApresentacaoControle();
+    CAA = new CntrApresentacaoAutenticacao();
+    CAP = new CntrApresentacaoParticipante();
+    CAPSS = new CntrApresentacaoPSS();
 
-    test<TUCargo>("Cargo");
+    CSA = new CntrServicoAutenticacao();
+    CSPA = new CntrServicoParticipante();
+    CSPE = new CntrServicoPeca();
+    CSSE = new CntrServicoSessao();
+    CSSA = new CntrServicoSala();
 
-    test<TUClassificacao>("Classificacao");
+    CAC->setCntrApresentacaoAutenticacao(CAA);
+    CAC->setCntrApresentacaoParticipante(CAP);
+    CAC->setCntrApresentacaoPSS(CAPSS);
 
-    test<TUCodigo>("Codigo");
+    CAA->setCntrServicoAutenticacao(CSA);
+    CAP->setCntrServicoParticipante(CSPA);
+    CAPSS->setCntrServicoPeca(CSPE);
+    CAPSS->setCntrServicoSessao(CSSE);
+    CAPSS->setCntrServicoSala(CSSA);
 
-    test<TUData>("Data");
-
-    test<TUEmail>("Email");
-
-    test<TUHorario>("Horario");
-
-    test<TUMatricula>("Matricula");
-
-    test<TUNome>("Nome");
-
-    test<TUSenha>("Senha");
-
-    test<TUTelefone>("Telefone");
-
-    test<TUTipo>("Tipo");
-
-    cout << endl << "Entidades:" << endl;
-
-    test<TUParticipante>("Participante");
-
-    test<TUPeca>("Peca");
-
-    test<TUSessao>("Sessao");
-
-    test<TUSala>("Sala");
-
+    CAC->executar();
 
     return 0;
 }

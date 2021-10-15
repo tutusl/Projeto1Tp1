@@ -1,9 +1,8 @@
-#include "Dominios.h"
-#include "Entidades.h"
-
 #ifndef INTERFACES_H
 #define INTERFACES_H
-
+#include <string>
+#include "Dominios.h"
+#include "Entidades.h"
 
 class IServicoAutenticacao;
 class IServicoParticipante;
@@ -54,9 +53,9 @@ class IServicoAutenticacao {
 class IServicoParticipante {
     public:
         virtual bool descadastrar(Matricula*) = 0;
-        virtual bool alterar(Matricula*) = 0;
-        virtual void visualizar(Matricula*) = 0;
+        virtual bool alterar(Participante*) = 0;
         virtual bool cadastrar(Participante*) = 0;
+        virtual bool cadastrarEmPeca(Matricula*, string) = 0;
 };
 
 
@@ -65,19 +64,19 @@ class IServicoPeca{
         virtual bool incluir(Peca*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Peca*) = 0;
-        virtual void visualizar(Codigo*) = 0;
-        virtual void listar() = 0;
+        virtual string visualizar(Codigo*) = 0;
+        virtual string listar() = 0;
 
 };
 
 
 class IServicoSessao{
     public:
-        virtual bool incluir(Sessao*) = 0;
+        virtual bool incluir(Sessao*, string, string) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Sessao*) = 0;
-        virtual void visualizar(Codigo*) = 0;
-        virtual void listar() = 0;
+        virtual string visualizar(Codigo*) = 0;
+        virtual string listar() = 0;
 
 };
 
@@ -86,8 +85,8 @@ class IServicoSala{
         virtual bool incluir(Sala*) = 0;
         virtual bool excluir(Codigo*) = 0;
         virtual bool editar(Sala*) = 0;
-        virtual void visualizar(Codigo*) = 0;
-        virtual void listar() = 0;
+        virtual string visualizar(Codigo*) = 0;
+        virtual string listar() = 0;
 
 };
 

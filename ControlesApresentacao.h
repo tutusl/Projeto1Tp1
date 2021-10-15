@@ -9,7 +9,7 @@
 #define CLR system("CLS")
 #elif __linux__  // OS Linux
 #define CLR system("clear")
-#endif 
+#endif
 
 class CntrApresentacaoControle {
     private:
@@ -30,7 +30,7 @@ class CntrApresentacaoControle {
 class CntrApresentacaoAutenticacao: public IApresentacaoAutenticacao {
     private:
         IServicoAutenticacao *cntr;
-        
+
     public:
         bool autenticar(Matricula *matricula) override;
         void setCntrServicoAutenticacao(IServicoAutenticacao *cntr) override {this->cntr = cntr;};
@@ -43,6 +43,7 @@ class CntrApresentacaoParticipante: public IApresentacaoParticipante {
         IServicoParticipante *cntr;
 
     public:
+        bool editar(Matricula *matricula);
         bool cadastrar() override;
         void executar(Matricula *matricula) override;
         void setCntrServicoParticipante(IServicoParticipante *cntr) override {this->cntr = cntr;};
@@ -60,7 +61,7 @@ class CntrApresentacaoPSS: public IApresentacaoPSS {
         bool incluirPeca();
         bool incluirSessao();
         bool incluirSala();
-        
+
         void excluir();
 
         void visualizar();

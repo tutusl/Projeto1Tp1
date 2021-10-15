@@ -18,10 +18,13 @@ void CntrApresentacaoControle::executar(){
     string texto8 = "2 - Selecionar servicos relacionados a peca, sessao ou sala.";
     string texto9 = "3 - Encerrar sessao.";
 
-    string texto10 = "Falha na autenticacao. Aperte enter para continuar."; 
+    string texto10 = "Falha na autenticacao. Aperte enter para continuar.";
+
+    string texto11 ="Sucesso no cadastramento. Digite algo.";
+    string texto12 ="Falha no cadastramento. Digite algo.";
 
     int op;
-    bool apresentar1 = true;    
+    bool apresentar1 = true;
 
     while(apresentar1){
         CLR;
@@ -63,10 +66,20 @@ void CntrApresentacaoControle::executar(){
                     CLR;
                     cout << texto10 << endl;
                     cin.ignore();
+                    cin.ignore();
                 }
                 break;
             case 2:
-                cntrApresentacaoParticipante->cadastrar();
+                if (cntrApresentacaoParticipante->cadastrar()){
+                    cout << texto11 << endl;
+                    cin.ignore();
+                    cin.ignore();
+                }
+                else{
+                    cout << texto12 << endl;
+                    cin.ignore();
+                    cin.ignore();
+                }
                 break;
             case 3:
                 cntrApresentacaoPSS->executar();
@@ -89,15 +102,15 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
     string texto1 = "Digite a matricula: ";
     string texto2 = "Digite a senha: ";
     string texto3 = "Dado em formato incorreto. Aperte enter.";
-    
+
     string dado1;
     string dado2;
-    
+
     Senha senha;
 
     while(true){
         CLR;
-        cout << texto1 << " ";                             
+        cout << texto1 << " ";
         cin >> dado1;
         cout << texto2;
         cin >> dado2;
@@ -110,6 +123,8 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
             CLR;
             cout << texto3 << endl;
             cin.ignore();
+            cin.ignore();
+            return false;
         }
     }
     return (cntr->autenticar(matricula, &senha));
@@ -130,8 +145,7 @@ bool CntrApresentacaoParticipante::cadastrar(){
     string texto7 ="Telefone        : ";
     string texto8 ="Cargo           : ";
     string texto9 ="Dados em formato incorreto. Digite algo.";
-    string texto10 ="Sucesso no cadastramento. Digite algo.";
-    string texto11 ="Falha no cadastramento. Digite algo.";
+
 
     string dado1, dado2, dado3, dado4, dado5, dado6, dado7;
 
@@ -147,19 +161,19 @@ bool CntrApresentacaoParticipante::cadastrar(){
     CLR;
 
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
-    cout << texto4; 
+    cout << texto4;
     cin >> dado3;
-    cout << texto5; 
+    cout << texto5;
     cin >> dado4;
-    cout << texto6; 
+    cout << texto6;
     cin >> dado5;
-    cout << texto7; 
+    cout << texto7;
     cin >> dado6;
-    cout << texto8; 
+    cout << texto8;
     cin >> dado7;
 
     //  Talvez precise de cin.ignore()
@@ -176,9 +190,10 @@ bool CntrApresentacaoParticipante::cadastrar(){
     catch(invalid_argument &exp){
         cout << texto9 << endl;                                                            // Informa formato incorreto
         cin.ignore();
+        cin.ignore();
         return false;
     }
-    
+
     participante.setMatricula(matricula);
     participante.setEmail(email);
     participante.setNome(nome);
@@ -188,25 +203,28 @@ bool CntrApresentacaoParticipante::cadastrar(){
     participante.setCargo(cargo);
 
     return (cntr->cadastrar(&participante));
-    
+
 }
-    
+
 
 void CntrApresentacaoParticipante::executar(Matricula *matricula){
     string texto1 = "Selecione um dos servicos : ";
     string texto2 = "1 - Descadastrar usuario.";
     string texto3 = "2 - Alterar dados.";
-    string texto4 = "3 - Visualizar dados.";
+    string texto4 = "3 - Cadastrar em peca.";
     string texto5 = "4 - Voltar ao inicio.";
 
     string texto6 = "Usuario descadastrado com sucesso.";
     string texto7 = "Falha em descadastrar o usuario.";
     string texto8 = "Usuario alterado com sucesso";
     string texto9 = "Falha em alterar o usuario.";
+    string texto10 = "Codigo da peca: ";
+    string texto11 = "Cadastrado em peca com sucesso";
+    string texto12 = "Falha em cadastrar em peca";
 
     int op;
     bool apresentar = true;
-    
+
     while(apresentar){
         CLR;
         cout << texto1 << endl;
@@ -215,6 +233,7 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
         cout << texto4 << endl;
         cout << texto5 << endl;
 
+        string peca;
         cin >> op;
 
         switch(op){
@@ -226,13 +245,21 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
                 apresentar = false;
                 break;
             case 2:
-                if(cntr->alterar(matricula))
+                if(editar(matricula))
                     cout << texto8 << endl;
                 else
                     cout << texto9 << endl;
                 break;
             case 3:
-                cntr->visualizar(matricula);
+                CLR;
+
+                cout << texto10;
+                cin >> peca;
+
+                if(cntr->cadastrarEmPeca(matricula, peca))
+                    cout << texto11 << endl;
+                else
+                    cout << texto12 << endl;
                 break;
             case 4:
                 apresentar = false;
@@ -240,6 +267,70 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
         }
     }
     return;
+}
+
+bool CntrApresentacaoParticipante::editar(Matricula *matricula){
+    string texto1 ="Preencha os seguintes campos:";
+    string texto2 ="Email           : ";
+    string texto3 ="Nome            : ";
+    string texto4 ="Sobrenome       : ";
+    string texto5 ="Senha           : ";
+    string texto6 ="Telefone        : ";
+    string texto7 ="Cargo           : ";
+    string texto8 ="Dados em formato incorreto. Digite algo.";
+
+    string dado1, dado2, dado3, dado4, dado5, dado6;
+
+    Participante participante;
+    Email email;
+    Nome nome;
+    Nome sobrenome;
+    Senha senha;
+    Telefone telefone;
+    Cargo cargo;
+
+    CLR;
+
+    cout << texto1 << endl;
+    cout << texto2;
+    cin >> dado1;
+    cout << texto3;
+    cin >> dado2;
+    cout << texto4;
+    cin >> dado3;
+    cout << texto5;
+    cin >> dado4;
+    cout << texto6;
+    cin >> dado5;
+    cout << texto7;
+    cin >> dado6;
+
+    //  Talvez precise de cin.ignore()
+
+    try{
+        email.setValor(dado1);
+        nome.setValor(dado2);
+        sobrenome.setValor(dado3);
+        senha.setValor(dado4);
+        telefone.setValor(dado5);
+        cargo.setValor(dado6);
+    }
+    catch(invalid_argument &exp){
+        cout << texto8 << endl;                                                            // Informa formato incorreto
+        cin.ignore();
+        cin.ignore();
+        return false;
+    }
+
+    participante.setMatricula(*matricula);
+    participante.setEmail(email);
+    participante.setNome(nome);
+    participante.setSobrenome(sobrenome);
+    participante.setSenha(senha);
+    participante.setTelefone(telefone);
+    participante.setCargo(cargo);
+
+    return (cntr->alterar(&participante));
 }
 
 //
@@ -263,18 +354,18 @@ void CntrApresentacaoPSS::executar(){
         cout << texto3 << endl;
         cout << texto4 << endl;
         cout << texto5 << endl;
-        
+
         cin >> op;
-        
+
         switch(op){
             case 1:
-                cntrPeca->listar();
+                cout << cntrPeca->listar() << endl;
                 break;
             case 2:
-                cntrSessao->listar();
+                cout << cntrSessao->listar() << endl;
                 break;
             case 3:
-                cntrSala->listar();
+                cout << cntrSala->listar() << endl;
                 break;
             case 4:
                 apresentar = false;
@@ -298,17 +389,17 @@ bool CntrApresentacaoPSS::editarPeca(){
     Tipo tipo;
     Classificacao classificacao;
     Codigo codigo;
-    
+
     CLR;
 
     cout << texto6 << endl;
     cin >> dado4;
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
-    cout << texto4; 
+    cout << texto4;
     cin >> dado3;
 
     try{
@@ -320,16 +411,17 @@ bool CntrApresentacaoPSS::editarPeca(){
     catch(invalid_argument &exp){
         cout << texto5 << endl;                                                            // Informa formato incorreto
         cin.ignore();
+        cin.ignore();
         return false;
     }
-    
+
     peca.setNome(nome);
     peca.setTipo(tipo);
     peca.setClassificacao(classificacao);
     peca.setIdentificador(codigo);
 
     return (cntrPeca->editar(&peca));
-    
+
 }
 
 bool CntrApresentacaoPSS::editarSessao(){
@@ -345,15 +437,15 @@ bool CntrApresentacaoPSS::editarSessao(){
     Data data;
     Horario hora;
     Codigo codigo;
-    
+
     CLR;
 
     cout<< texto5 << endl;
     cin >> dado3;
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
 
 
@@ -365,15 +457,16 @@ bool CntrApresentacaoPSS::editarSessao(){
     catch(invalid_argument &exp){
         cout << texto4 << endl;                                                            // Informa formato incorreto
         cin.ignore();
-        return false; 
+        cin.ignore();
+        return false;
     }
-    
+
     sessao.setData(data);
     sessao.setHorario(hora);
     sessao.setIdentificador(codigo);
 
     return (cntrSessao->editar(&sessao));
-    
+
 }
 
 bool CntrApresentacaoPSS::editarSala(){
@@ -389,15 +482,15 @@ bool CntrApresentacaoPSS::editarSala(){
     Nome nome;
     Capacidade capacidade;
     Codigo codigo;
-    
+
     CLR;
 
     cout<< texto5 << endl;
     cin >> dado3;
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
 
 
@@ -409,15 +502,16 @@ bool CntrApresentacaoPSS::editarSala(){
     catch(invalid_argument &exp){
         cout << texto4 << endl;                                                            // Informa formato incorreto
         cin.ignore();
+        cin.ignore();
         return false;
     }
-    
+
     sala.setNome(nome);
     sala.setCapacidade(capacidade);
     sala.setIdentificador(codigo);
 
     return cntrSala->editar(&sala);
-    
+
 }
 
 void CntrApresentacaoPSS::editar(){
@@ -445,7 +539,7 @@ void CntrApresentacaoPSS::editar(){
         cout << texto3 << endl;
         cout << texto4 << endl;
         cout << texto5 << endl;
-        
+
         cin >> op;
         switch(op){
             case 1:
@@ -474,7 +568,6 @@ void CntrApresentacaoPSS::editar(){
 
 }
 
-
 bool CntrApresentacaoPSS::incluirPeca(){
     string texto1 = "Preencha os seguintes campos: ";
     string texto2 = "Nome         : ";
@@ -488,15 +581,15 @@ bool CntrApresentacaoPSS::incluirPeca(){
     Nome nome;
     Tipo tipo;
     Classificacao classificacao;
-    
+
     CLR;
 
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
-    cout << texto4; 
+    cout << texto4;
     cin >> dado3;
 
     try{
@@ -507,13 +600,14 @@ bool CntrApresentacaoPSS::incluirPeca(){
     catch(invalid_argument &exp){
         cout << texto5 << endl;                                                            // Informa formato incorreto
         cin.ignore();
+        cin.ignore();
         return false;
     }
-    
+
     peca.setNome(nome);
     peca.setTipo(tipo);
     peca.setClassificacao(classificacao);
-    
+
     return (cntrPeca->incluir(&peca));
 }
 
@@ -522,20 +616,26 @@ bool CntrApresentacaoPSS::incluirSessao(){
     string texto2 = "Data         : ";
     string texto3 = "Hora         : ";
     string texto4 = "Dados em formato incorreto. Digite algo.";
+    string texto5 = "Codigo da peca associada: ";
+    string texto6 = "Codigo da sala associada: ";
 
-    string dado1, dado2;
+    string dado1, dado2, peca, sala;
 
     Sessao sessao;
     Data data;
     Horario hora;
-    
+
     CLR;
 
     cout << texto1 << endl;
-    cout << texto2; 
+    cout << texto2;
     cin >> dado1;
-    cout << texto3; 
+    cout << texto3;
     cin >> dado2;
+    cout << texto5;
+    cin >> peca;
+    cout << texto6;
+    cin >> sala;
 
 
     try{
@@ -545,20 +645,21 @@ bool CntrApresentacaoPSS::incluirSessao(){
     catch(invalid_argument &exp){
         cout << texto4 << endl;                                                            // Informa formato incorreto
         cin.ignore();
-        return false; 
+        cin.ignore();
+        return false;
     }
-    
+
     sessao.setData(data);
     sessao.setHorario(hora);
 
-    
-    return (cntrSessao->incluir(&sessao));
+
+    return (cntrSessao->incluir(&sessao, peca, sala));
 }
 
 bool CntrApresentacaoPSS::incluirSala(){
     string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Nome:                  ";
-    string texto3 = "Capacidade:            ";
+    string texto2 = "Nome         : ";
+    string texto3 = "Capacidade   : ";
     string texto4 = "Dados em formato incorreto. Digite algo.";
 
     string dado1, dado2;
@@ -566,13 +667,13 @@ bool CntrApresentacaoPSS::incluirSala(){
     Sala sala;
     Nome nome;
     Capacidade capacidade;
-    
+
     CLR;
 
     cout << texto1 << endl;
-    cout << texto2 << " "; 
+    cout << texto2 << " ";
     cin >> dado1;
-    cout << texto3 << " "; 
+    cout << texto3 << " ";
     cin >> dado2;
 
 
@@ -583,15 +684,16 @@ bool CntrApresentacaoPSS::incluirSala(){
     catch(invalid_argument &exp){
         cout << texto4 << endl;                                                            // Informa formato incorreto
         cin.ignore();
+        cin.ignore();
         return false;
     }
-    
+
     sala.setNome(nome);
     sala.setCapacidade(capacidade);
 
-    
+
     return (cntrSala->incluir(&sala));
-    
+
 }
 
 void CntrApresentacaoPSS::incluir(){
@@ -617,7 +719,7 @@ void CntrApresentacaoPSS::incluir(){
         cout << texto3 << endl;
         cout << texto4 << endl;
         cout << texto5 << endl;
-        
+
         cin >> op;
         switch(op){
             case 1:
@@ -675,7 +777,7 @@ void CntrApresentacaoPSS::excluir(){
         cout << texto3 << endl;
         cout << texto4 << endl;
         cout << texto5 << endl;
-        
+
         cin >> op;
         switch(op){
             case 1:
@@ -698,12 +800,62 @@ void CntrApresentacaoPSS::excluir(){
                 break;
             case 3:
                 cout << texto8 << endl;
-                cin >> cod;          
+                cin >> cod;
                 codigo.setValor(cod);
                 if(cntrSala->excluir(&codigo))
                     cout << texto11 << endl;
                 else
                     cout << texto14 << endl;
+                break;
+            case 4:
+                apresentar = false;
+                break;
+        }
+    }
+}
+
+void CntrApresentacaoPSS::visualizar(){
+    string texto1 = "Selecione um dos servicos : ";
+    string texto2 = "1 - Visualizar peca";
+    string texto3 = "2 - Visualizar sessao";
+    string texto4 = "3 - Visualizar sala";
+    string texto5 = "4 - Voltar.";
+    string texto6 = "Digite o código da peca que deseja visualizar: ";
+    string texto7 = "Digite o código da sessao que deseja visualizar: ";
+    string texto8 = "Digite o código da sala que deseja visualizar: ";
+
+    string cod;
+    Codigo codigo;
+    int op;
+    bool apresentar = true;
+
+    while(apresentar){
+        CLR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;
+
+        cin >> op;
+        switch(op){
+            case 1:
+                cout << texto6 << endl;
+                cin >> cod;
+                codigo.setValor(cod);
+                cout << cntrPeca->visualizar(&codigo) << endl;
+                break;
+            case 2:
+                cout << texto7 << endl;
+                cin >> cod;
+                codigo.setValor(cod);
+                cout << cntrSessao->visualizar(&codigo) << endl;
+                break;
+            case 3:
+                cout << texto8 << endl;
+                cin >> cod;
+                codigo.setValor(cod);
+                cout << cntrSala->visualizar(&codigo) << endl;
                 break;
             case 4:
                 apresentar = false;
@@ -733,9 +885,9 @@ void CntrApresentacaoPSS::executar(Matricula *matricula){
         cout << texto5 << endl;
         cout << texto6 << endl;
         cout << texto7 << endl;
-        
+
         cin >> op;
-        
+
         switch(op){
             case 1:
                 incluir();
@@ -757,5 +909,5 @@ void CntrApresentacaoPSS::executar(Matricula *matricula){
                 break;
         }
     }
-    
+
 }

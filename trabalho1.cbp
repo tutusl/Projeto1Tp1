@@ -31,7 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ControlesApresentacao.cpp" />
 		<Unit filename="ControlesApresentacao.h" />
+		<Unit filename="ControlesServico.cpp" />
 		<Unit filename="ControlesServico.h" />
 		<Unit filename="Dominios.cpp" />
 		<Unit filename="Dominios.h" />
@@ -40,6 +42,8 @@
 		<Unit filename="Interfaces.h" />
 		<Unit filename="Testes.cpp" />
 		<Unit filename="Testes.h" />
+		<Unit filename="container.cpp" />
+		<Unit filename="container.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<DoxyBlocks>

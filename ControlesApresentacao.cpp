@@ -59,10 +59,6 @@ void CntrApresentacaoControle::executar(){
                             case 3:
                                 apresentar2 = false;
                                 break;
-                            default:
-                                cout << "Selecione uma opção valida!" << endl;
-                                cin.ignore();
-                                break;
                         }
                     }
                 }
@@ -89,9 +85,6 @@ void CntrApresentacaoControle::executar(){
                 break;
             case 4:
                 apresentar1 = false;
-                break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
                 break;
         }
     }
@@ -270,9 +263,6 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
             case 4:
                 apresentar = false;
                 break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
-                break;
         }
     }
     return;
@@ -381,9 +371,6 @@ void CntrApresentacaoPSS::executar(){
                 break;
             case 4:
                 apresentar = false;
-                break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
                 break;
         }
     }
@@ -580,9 +567,6 @@ void CntrApresentacaoPSS::editar(){
                 break;
             case 4:
                 apresentar = false;
-                break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
                 break;
         }
     }
@@ -785,9 +769,6 @@ void CntrApresentacaoPSS::incluir(){
             case 4:
                 apresentar = false;
                 break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
-                break;
         }
     }
 
@@ -858,9 +839,6 @@ void CntrApresentacaoPSS::excluir(){
             case 4:
                 apresentar = false;
                 break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
-                break;
         }
     }
 }
@@ -917,9 +895,6 @@ void CntrApresentacaoPSS::visualizar(){
             case 4:
                 apresentar = false;
                 break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
-                break;
         }
     }
 }
@@ -971,9 +946,6 @@ void CntrApresentacaoPSS::executar(Matricula *matricula){
                 break;
             case 6:
                 apresentar = false;
-                break;
-            default:
-                cout << "Selecione uma opção valida!" << endl;
                 break;
         }
     }

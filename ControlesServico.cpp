@@ -46,7 +46,7 @@ bool CntrServicoParticipante::cadastrar(Participante *participante){
 
 bool CntrServicoParticipante::cadastrarEmPeca(Matricula *matricula, string peca){
     Peca2Participante *relacao = Peca2Participante::getInstancia();
-    return relacao->incluir(matricula->getValor(), peca);
+    return relacao->incluir(peca, matricula->getValor());
 }
 
 
@@ -76,7 +76,8 @@ bool CntrServicoPeca::editar(Peca *peca){
 string CntrServicoPeca::visualizar(Codigo *codigo){
     ContainerPeca* cp = ContainerPeca::getInstancia();
     Peca* peca = cp->pesquisar(codigo->getValor());
-
+    if(peca == nullptr)
+        return "Peca nao encontrada.";
     string saida = "Identificador: ";
     saida += peca->getIdentificador().getValor();
     saida += "\nNome: ";
@@ -125,7 +126,8 @@ bool CntrServicoSessao::editar(Sessao *sessao){
 string CntrServicoSessao::visualizar(Codigo *codigo){
     ContainerSessao* cs = ContainerSessao::getInstancia();
     Sessao* sessao = cs->pesquisar(codigo->getValor());
-
+    if(sessao == nullptr)
+        return "Sessao nao encontrada.";
     string saida = "Identificador: ";
     saida += sessao->getIdentificador().getValor();
     saida += "\nData: ";
@@ -139,7 +141,7 @@ string CntrServicoSessao::visualizar(Codigo *codigo){
 string CntrServicoSessao::listar(){
     ContainerSessao *cp = ContainerSessao::getInstancia();
     ContainerSessao::cmap mp = cp->getMap();
-    string saida = "Codigos de pecas:";
+    string saida = "Codigos de sessoes:";
     for(ContainerSessao::cmap::iterator i=mp.begin();i!=mp.end();i++) {
         saida += "\n";
         saida += i->first;
@@ -187,7 +189,7 @@ string CntrServicoSala::visualizar(Codigo *codigo){
 string CntrServicoSala::listar(){
     ContainerSala *cp = ContainerSala::getInstancia();
     ContainerSala::cmap mp = cp->getMap();
-    string saida = "Codigos de pecas:";
+    string saida = "Codigos de salas:";
     for(ContainerSala::cmap::iterator i=mp.begin();i!=mp.end();i++) {
         saida += "\n";
         saida += i->first;

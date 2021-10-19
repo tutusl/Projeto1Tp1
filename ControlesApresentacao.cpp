@@ -241,6 +241,8 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
                     cout << texto6 << endl;
                 else
                     cout << texto7 << endl;
+                cin.ignore();
+                cin.ignore();
                 apresentar = false;
                 break;
             case 2:
@@ -248,6 +250,8 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
                     cout << texto8 << endl;
                 else
                     cout << texto9 << endl;
+                cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 CLR;
@@ -259,6 +263,8 @@ void CntrApresentacaoParticipante::executar(Matricula *matricula){
                     cout << texto11 << endl;
                 else
                     cout << texto12 << endl;
+                cin.ignore();
+                cin.ignore();
                 break;
             case 4:
                 apresentar = false;
@@ -304,7 +310,6 @@ bool CntrApresentacaoParticipante::editar(Matricula *matricula){
     cout << texto7;
     cin >> dado6;
 
-    //  Talvez precise de cin.ignore()
 
     try{
         email.setValor(dado1);
@@ -360,13 +365,16 @@ void CntrApresentacaoPSS::executar(){
             case 1:
                 cout << cntrPeca->listar() << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 2:
                 cout << cntrSessao->listar() << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 cout << cntrSala->listar() << endl;
+                cin.ignore();
                 cin.ignore();
                 break;
             case 4:
@@ -382,7 +390,7 @@ bool CntrApresentacaoPSS::editarPeca(){
     string texto3 = "Tipo           : ";
     string texto4 = "Classificação  : ";
     string texto5 = "Dados em formato incorreto. Digite algo.";
-    string texto6 = "Identifique o codigo da Sessao que deseja mudar: ";
+    string texto6 = "Identifique o codigo da peca que deseja mudar: ";
 
     string dado1, dado2, dado3, dado4;
 
@@ -431,7 +439,7 @@ bool CntrApresentacaoPSS::editarSessao(){
     string texto2 = "Data           : ";
     string texto3 = "Hora           : ";
     string texto4 = "Dados em formato incorreto. Aperte Enter.";
-    string texto5 = "Identifique o codigo da Sessao que deseja mudar: ";
+    string texto5 = "Identifique o codigo da sessao que deseja mudar: ";
 
     string dado1, dado2, dado3;
 
@@ -550,6 +558,7 @@ void CntrApresentacaoPSS::editar(){
                 else
                     cout << texto9 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 2:
                 if(editarSessao())
@@ -557,12 +566,14 @@ void CntrApresentacaoPSS::editar(){
                 else
                     cout << texto10 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 if(editarSala())
                     cout << texto8 << endl;
                 else
                     cout << texto11 << endl;
+                cin.ignore();
                 cin.ignore();
                 break;
             case 4:
@@ -751,6 +762,7 @@ void CntrApresentacaoPSS::incluir(){
                 else
                     cout << texto9 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 2:
                 if(incluirSessao())
@@ -758,12 +770,14 @@ void CntrApresentacaoPSS::incluir(){
                 else
                     cout << texto10 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 if(incluirSala())
                     cout << texto8 << endl;
                 else
                     cout << texto11 << endl;
+                cin.ignore();
                 cin.ignore();
                 break;
             case 4:
@@ -815,6 +829,7 @@ void CntrApresentacaoPSS::excluir(){
                 else
                     cout << texto12 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 2:
                 cout << texto7 << endl;
@@ -825,6 +840,7 @@ void CntrApresentacaoPSS::excluir(){
                 else
                     cout << texto13 << endl;
                 cin.ignore();
+                cin.ignore();
                 break;
             case 3:
                 cout << texto8 << endl;
@@ -834,6 +850,7 @@ void CntrApresentacaoPSS::excluir(){
                     cout << texto11 << endl;
                 else
                     cout << texto14 << endl;
+                cin.ignore();
                 cin.ignore();
                 break;
             case 4:

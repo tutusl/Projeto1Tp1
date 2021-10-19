@@ -143,7 +143,7 @@ bool ContainerSessao::incluir(Sessao* sessao, string peca, string sala){
     if(!(relacao->incluir(peca, key)))
         return false;
 
-    bool valor;
+    bool valor = true;;
     if(container.count(key) < 1)
         container[key] = *sessao;
     else
